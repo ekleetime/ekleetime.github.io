@@ -1,2 +1,2 @@
 # ekleetime.github.io
-blog2
+blog
