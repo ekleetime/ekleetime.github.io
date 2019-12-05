@@ -1,7 +1,7 @@
 ---
-title: "Working with Pages"
-date: 2019-12-05
-categories: 
+title: "≈∏¿Ã∆≤"
+date: 2019-12-05 10:50:00 -0400
+categories: other test
 ---
 Working with Posts
 
