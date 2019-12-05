@@ -1,7 +1,7 @@
 ---
-title: "≈∏¿Ã∆≤"
-date: 2019-12-05 10:50:00 -0400
-categories: other test
+title: "todayfocus"
+date: 2019-12-05
+categories: 
 ---
 Working with Posts
 
