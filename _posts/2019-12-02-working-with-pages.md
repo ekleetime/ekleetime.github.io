@@ -1,5 +1,5 @@
 ---
-title: "Working with Pages"
+title: "Pages"
 date: 2019-12-05
 categories: 
 ---
