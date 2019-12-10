@@ -1,0 +1,28 @@
+
+[1] 없는 보안스키마 함수(DEC_VARCHAR2_SEL)
+1. XX1.DEC_VARCHAR2_SEL(T1.CUST_NO, 10, 'SSNO')
+    - STR 현황화면 리스트 조회(실명번호-엑셀다운시) str100SelectList
+    - STR 현황화면 STR 보고서 작성 보고대상자탭 실명번호컬럼 ,고객공통입력시 selectStrTransHst, insertStrCustcomm, str100SelectStrCustcomm, str100SelectStrCustDetail
+    - STR 현황화면 STR 보고서 작성 주관적질의탭 기보고검색버튼(btn_doc_search) selectStrDocHist
+
+
+[2] 없는 테이블 (TALNDCHM, TACUGIBM)
+2. SELECT * FROM TALNDCHM;
+    - STR 현황화면 STR 거래내역 정보 조회 selectStrTransHst
+    - STR 현황화면 STR TR 거래내역 상세정보 조회 selectStrTransRelationHst
+
+3. SELECT * FROM TACUGIBM;
+    - STR 현황화면 룰결과탭(REAL_NO_CD) selectRuleResultResult
+    - STR 현황화면 STR 보고서 작성 거래입력 insertStrTran
+    - STR 현황화면 STR 보고서 작성 고객공통입력 insertStrCustcomm
+    - STR 현황화면 STR 보고서 작성 개인고객입력 insertStrCustper
+    - STR 현황화면 STR 보고서 작성 법인고객입력 insertStrCustcor
+
+[3] 없는 공통코드 (STR_PROC_STS :처리상태)
+ 4. SELECT Z.RMKS_2
+ FROM TB_COM_COD Z
+ WHERE Z.COD_GRP_ID = 'STR_PROC_STS'
+       AND Z.USE_YN = 'Y'
+ ;
+  - STR 현황화면 리스트 조회 처리상태컬럼
+  - 결제버튼시 생성되는 결제팝업
