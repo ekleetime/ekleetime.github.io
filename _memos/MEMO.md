@@ -98,3 +98,8 @@ C:\Users\lee\.IntelliJIdea14\config
 
 
 이은경과장; 배영철대리; YBN
+
+RBAMRCAP 프로젝트
+처음 설정하는 비밀번호 : 00000000
+id/pw
+205026/205026a!
