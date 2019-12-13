@@ -1,6 +1,6 @@
-# πÆ¡¶¡° «ÿ∞·
+# Î¨∏Ï†úÏ†ê Ìï¥Í≤∞
 
-## ø¿∂Û≈¨ º≥ƒ°»ƒ ORA-12170: TNS: ¡¢º” Ω√∞£ √ ∞˙∞° πﬂª˝«‘ > º≠πˆ¬  πÆ¡¶¿œ ∞°¥…º∫... 20191128
+## Ïò§ÎùºÌÅ¥ ÏÑ§ÏπòÌõÑ ORA-12170: TNS: Ï†ëÏÜç ÏãúÍ∞Ñ Ï¥àÍ≥ºÍ∞Ä Î∞úÏÉùÌï® > ÏÑúÎ≤ÑÏ™Ω Î¨∏Ï†úÏùº Í∞ÄÎä•ÏÑ±... 20191128
 
 # intellij idea failed to create JVM error code -1
 from https://stackoverflow.com/questions/45846624/intellij-idea-failed-to-create-jvm-error-code-1
@@ -9,11 +9,11 @@ answer : Please check your phpstorm64.exe.vmoptions file located at bin folder a
          -XX:+UseG1GC
          
 # oracle utf-8
-Step 1. sqlplus ( client )ø°º≠¿« ¿Œƒ⁄µ˘  »Ø∞Ê ∫Øºˆ º≥¡§
+Step 1. sqlplus ( client )ÏóêÏÑúÏùò Ïù∏ÏΩîÎî©  ÌôòÍ≤Ω Î≥ÄÏàò ÏÑ§Ï†ï
 $ export NLS_LANG=KOREAN_KOREA.UTF8
-Step 2. DB º≠πˆ ø°º≠¿« ¿Œƒ⁄µ˘  »Ø∞Ê ∫Øºˆ º≥¡§
+Step 2. DB ÏÑúÎ≤Ñ ÏóêÏÑúÏùò Ïù∏ÏΩîÎî©  ÌôòÍ≤Ω Î≥ÄÏàò ÏÑ§Ï†ï
 
-«ˆ¿Á º≥¡§µ» ¿Œƒ⁄µ˘ »Æ¿Œ.
+ÌòÑÏû¨ ÏÑ§Ï†ïÎêú Ïù∏ÏΩîÎî© ÌôïÏù∏.
 
 SQL> select * from nls_database_parameters where parameter like '%CHARACTERSET%';
 
@@ -34,7 +34,7 @@ VALUE$
 
 AMERICAN
 
-DBº≠πˆ∏¶ UTF-8¿∏∑Œ ¿Œƒ⁄µ˘ º≥¡§ »ƒ ¿Á±‚µø ±Ó¡ˆ «ÿ¡÷∏È ≥°.
+DBÏÑúÎ≤ÑÎ•º UTF-8ÏúºÎ°ú Ïù∏ÏΩîÎî© ÏÑ§Ï†ï ÌõÑ Ïû¨Í∏∞Îèô ÍπåÏßÄ Ìï¥Ï£ºÎ©¥ ÎÅù.
 SQL> update sys.props$ set value$='UTF8' where name='NLS_CHARACTERSET';
 
 1 row updated.
@@ -85,7 +85,12 @@ ID
 
 --------------------------------------------------------------------------------
 
-∂ÙΩ√
+ÎùΩÏãú
 
 
 from https://rocksea.tistory.com/241
+
+
+
+* ÌôòÍ≤ΩÏÑ§Ï†ï
+C:\Users\lee\.IntelliJIdea14\config
