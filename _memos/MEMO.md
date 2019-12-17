@@ -103,3 +103,138 @@ RBAMRCAP 프로젝트
 처음 설정하는 비밀번호 : 00000000
 id/pw
 205026/205026a!
+
+
+
+==-===오류찝찌ㅃ
+D:\PROJECT\RBAMR\Tomcat\tomcat8.0.53\bin\catalina.bat run
+[2019-12-17 10:28:30,320] Artifact RBAMRCAP:Web exploded: Server is not connected. Deploy is not available.
+Using CATALINA_BASE:   "C:\Users\lee\.IntelliJIdea14\system\tomcat\Unnamed_WorkSpace"
+Using CATALINA_HOME:   "D:\PROJECT\RBAMR\Tomcat\tomcat8.0.53"
+Using CATALINA_TMPDIR: "D:\PROJECT\RBAMR\Tomcat\tomcat8.0.53\temp"
+Using JRE_HOME:        "C:\Program Files\Java\jdk1.8.0_211"
+Using CLASSPATH:       "D:\PROJECT\RBAMR\Tomcat\tomcat8.0.53\bin\bootstrap.jar;D:\PROJECT\RBAMR\Tomcat\tomcat8.0.53\bin\tomcat-juli.jar"
+Handler error
+java.lang.reflect.InvocationTargetException
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at org.apache.juli.ClassLoaderLogManager.readConfiguration(ClassLoaderLogManager.java:600)
+	at org.apache.juli.ClassLoaderLogManager.readConfiguration(ClassLoaderLogManager.java:537)
+	at org.apache.juli.ClassLoaderLogManager.readConfiguration(ClassLoaderLogManager.java:336)
+	at java.util.logging.LogManager$3.run(LogManager.java:399)
+	at java.util.logging.LogManager$3.run(LogManager.java:396)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.util.logging.LogManager.readPrimordialConfiguration(LogManager.java:396)
+	at java.util.logging.LogManager.access$800(LogManager.java:145)
+	at java.util.logging.LogManager$2.run(LogManager.java:345)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.util.logging.LogManager.ensureLogManagerInitialized(LogManager.java:338)
+	at java.util.logging.LogManager.getLogManager(LogManager.java:378)
+	at java.util.logging.Logger.demandLogger(Logger.java:448)
+	at java.util.logging.Logger.getLogger(Logger.java:502)
+	at com.sun.jmx.remote.util.ClassLogger.<init>(ClassLogger.java:55)
+	at sun.management.jmxremote.ConnectorBootstrap.<clinit>(ConnectorBootstrap.java:846)
+	at sun.management.Agent.startAgent(Agent.java:262)
+	at sun.management.Agent.startAgent(Agent.java:452)
+Caused by: java.lang.IllegalArgumentException: Bad level "ERROR"
+	at java.util.logging.Level.parse(Level.java:488)
+	at org.apache.juli.FileHandler.configure(FileHandler.java:431)
+	at org.apache.juli.FileHandler.<init>(FileHandler.java:175)
+	at org.apache.juli.AsyncFileHandler.<init>(AsyncFileHandler.java:75)
+	at org.apache.juli.AsyncFileHandler.<init>(AsyncFileHandler.java:67)
+	... 22 more
+Handler error
+java.lang.reflect.InvocationTargetException
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at org.apache.juli.ClassLoaderLogManager.readConfiguration(ClassLoaderLogManager.java:600)
+	at org.apache.juli.ClassLoaderLogManager.readConfiguration(ClassLoaderLogManager.java:537)
+	at org.apache.juli.ClassLoaderLogManager.readConfiguration(ClassLoaderLogManager.java:336)
+	at java.util.logging.LogManager$3.run(LogManager.java:399)
+	at java.util.logging.LogManager$3.run(LogManager.java:396)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.util.logging.LogManager.readPrimordialConfiguration(LogManager.java:396)
+	at java.util.logging.LogManager.access$800(LogManager.java:145)
+	at java.util.logging.LogManager$2.run(LogManager.java:345)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.util.logging.LogManager.ensureLogManagerInitialized(LogManager.java:338)
+	at java.util.logging.LogManager.getLogManager(LogManager.java:378)
+	at java.util.logging.Logger.demandLogger(Logger.java:448)
+	at java.util.logging.Logger.getLogger(Logger.java:502)
+	at com.sun.jmx.remote.util.ClassLogger.<init>(ClassLogger.java:55)
+	at sun.management.jmxremote.ConnectorBootstrap.<clinit>(ConnectorBootstrap.java:846)
+	at sun.management.Agent.startAgent(Agent.java:262)
+	at sun.management.Agent.startAgent(Agent.java:452)
+Caused by: java.lang.IllegalArgumentException: Bad level "ERROR"
+	at java.util.logging.Level.parse(Level.java:488)
+	at org.apache.juli.FileHandler.configure(FileHandler.java:431)
+	at org.apache.juli.FileHandler.<init>(FileHandler.java:175)
+	at org.apache.juli.AsyncFileHandler.<init>(AsyncFileHandler.java:75)
+	at org.apache.juli.AsyncFileHandler.<init>(AsyncFileHandler.java:67)
+	... 22 more
+Handler error
+java.lang.reflect.InvocationTargetException
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at org.apache.juli.ClassLoaderLogManager.readConfiguration(ClassLoaderLogManager.java:600)
+	at org.apache.juli.ClassLoaderLogManager.readConfiguration(ClassLoaderLogManager.java:537)
+	at org.apache.juli.ClassLoaderLogManager.readConfiguration(ClassLoaderLogManager.java:336)
+	at java.util.logging.LogManager$3.run(LogManager.java:399)
+	at java.util.logging.LogManager$3.run(LogManager.java:396)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.util.logging.LogManager.readPrimordialConfiguration(LogManager.java:396)
+	at java.util.logging.LogManager.access$800(LogManager.java:145)
+	at java.util.logging.LogManager$2.run(LogManager.java:345)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.util.logging.LogManager.ensureLogManagerInitialized(LogManager.java:338)
+	at java.util.logging.LogManager.getLogManager(LogManager.java:378)
+	at java.util.logging.Logger.demandLogger(Logger.java:448)
+	at java.util.logging.Logger.getLogger(Logger.java:502)
+	at com.sun.jmx.remote.util.ClassLogger.<init>(ClassLogger.java:55)
+	at sun.management.jmxremote.ConnectorBootstrap.<clinit>(ConnectorBootstrap.java:846)
+	at sun.management.Agent.startAgent(Agent.java:262)
+	at sun.management.Agent.startAgent(Agent.java:452)
+Caused by: java.lang.IllegalArgumentException: Bad level "ERROR"
+	at java.util.logging.Level.parse(Level.java:488)
+	at org.apache.juli.FileHandler.configure(FileHandler.java:431)
+	at org.apache.juli.FileHandler.<init>(FileHandler.java:175)
+	at org.apache.juli.AsyncFileHandler.<init>(AsyncFileHandler.java:75)
+	at org.apache.juli.AsyncFileHandler.<init>(AsyncFileHandler.java:67)
+	... 22 more
+Handler error
+java.lang.reflect.InvocationTargetException
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at org.apache.juli.ClassLoaderLogManager.readConfiguration(ClassLoaderLogManager.java:600)
+	at org.apache.juli.ClassLoaderLogManager.readConfiguration(ClassLoaderLogManager.java:537)
+	at org.apache.juli.ClassLoaderLogManager.readConfiguration(ClassLoaderLogManager.java:336)
+	at java.util.logging.LogManager$3.run(LogManager.java:399)
+	at java.util.logging.LogManager$3.run(LogManager.java:396)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.util.logging.LogManager.readPrimordialConfiguration(LogManager.java:396)
+	at java.util.logging.LogManager.access$800(LogManager.java:145)
+	at java.util.logging.LogManager$2.run(LogManager.java:345)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.util.logging.LogManager.ensureLogManagerInitialized(LogManager.java:338)
+	at java.util.logging.LogManager.getLogManager(LogManager.java:378)
+	at java.util.logging.Logger.demandLogger(Logger.java:448)
+	at java.util.logging.Logger.getLogger(Logger.java:502)
+	at com.sun.jmx.remote.util.ClassLogger.<init>(ClassLogger.java:55)
+	at sun.management.jmxremote.ConnectorBootstrap.<clinit>(ConnectorBootstrap.java:846)
+	at sun.management.Agent.startAgent(Agent.java:262)
+	at sun.management.Agent.startAgent(Agent.java:452)
+Caused by: java.lang.IllegalArgumentException: Bad level "ERROR"
+	at java.util.logging.Level.parse(Level.java:488)
+	at org.apache.juli.FileHandler.configure(FileHandler.java:431)
+	at org.apache.juli.FileHandler.<init>(FileHandler.java:175)
+	at org.apache.juli.AsyncFileHandler.<init>(AsyncFileHandler.java:75)
+	at org.apache.juli.AsyncFileHandler.<init>(AsyncFileHandler.java:67)
+	... 22 more
