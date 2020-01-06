@@ -23,3 +23,7 @@ https://mmistakes.github.io/minimal-mistakes/docs/navigation/
 
 # 타 블로그
 http://boansecurity.blogspot.com/2016/07/blog-post_25.html
+
+
+진짜 진짜 괜찮은 블로그...
+https://madplay.github.io/post/binary-search-tree
