@@ -1,0 +1,598 @@
+▶  DEBUG 14:48:29.918 o.s.w.s.DispatcherServlet.doService[869] - DispatcherServlet with name 'appServlet' processing POST request for [/rba/tms/ruleManage/updateRule.do]
+▶  DEBUG 14:48:29.918 o.s.w.s.m.m.a.RequestMappingHandlerMapping.getHandlerInternal[310] - Looking up handler method for path /tms/ruleManage/updateRule.do
+▶  DEBUG 14:48:29.919 o.s.w.s.m.m.a.RequestMappingHandlerMapping.getHandlerInternal[317] - Returning handler method [public int com.kolin.sk.tms.ruleManage.RuleManageController.updateRule(java.util.Map<java.lang.String, java.lang.Object>,javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse,javax.servlet.http.HttpSession) throws java.lang.Exception]
+
+>>> NULL PARAMETER
+RUL_GB,
+GR_CD,
+MD_CD,
+
+┌──────────── Parameters ──────────────────────────────────────────────────────────────────────────────────────────────
+│ STS_CHANGE :
+│ RUL_CD : 101
+│ RUL_GRD : 2
+│ RULSUM :
+│ RULCHU : 01
+│ RUL_SCR :
+│ RUL_STS : 2
+│ RUL_NM : 고객/01_고령자
+│ RUL_DEF : 3개월 이상 연체된 고객이 해당월에 현금 또는 가상계좌를 통해 1000만원 이상을 입금한 경우12
+│ RUL_NOTE : 장기간 연체 상환
+│ RUL_REFER : 장기간 연체 상환
+│ FACTOR1_NM :
+│ FACTOR2_NM :
+│ FACTOR3_NM :
+│ FACTOR4_NM :
+│ FACTOR5_NM :
+│ FACTOR6_NM :
+│ FACTOR1 :
+│ FACTOR2 :
+│ FACTOR3 :
+│ FACTOR4 :
+│ FACTOR5 :
+│ FACTOR6 :
+│ FCON1 :
+│ FCON2 :
+│ FCON3 :
+│ FCON4 :
+│ FCON5 :
+│ FCON6 :
+├──────────── Headers ─────────────────────────────────────────────────────────────────────────────────────────────────
+│ Uri Method     : POST /tms/ruleManage/updateRule.do
+└──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+## LOG PARAMS {actErrMsg=, actAgent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36, actReferer=http://localhost:8280/rba/main.do, actElapsedTime=, actAjaxYn=Y, sbCd=101, athrCd=0004, actTime=1578289709978, logGr=RBA, actHost=localhost:8280, empNo=205026, deptCd=900, actMethod=POST, actOs=Windows 10, actClientIp=127.0.0.1, actUri=/tms/ruleManage/updateRule.do, logGbn=PROCESS, actBrower=Chrome, actParam=STS_CHANGE=;RUL_CD=101;RUL_GRD=2;RULSUM=;RULCHU=01;RUL_SCR=;RUL_STS=2;RUL_NM=고객/01_고령자;RUL_DEF=3개월 이상 연체된 고객이 해당월에 현금 또는 가상계좌를 통해 1000만원 이상을 입금한 경우12;RUL_NOTE=장기간 연체 상환;RUL_REFER=장기간 연체 상환;FACTOR1_NM=;FACTOR2_NM=;FACTOR3_NM=;FACTOR4_NM=;FACTOR5_NM=;FACTOR6_NM=;FACTOR1=;FACTOR2=;FACTOR3=;FACTOR4=;FACTOR5=;FACTOR6=;FCON1=;FCON2=;FCON3=;FCON4=;FCON5=;FCON6=;, brchCd=005, actErrCd=, actCtx=/rba, actErrDtlMsg=}
+▶  DEBUG 14:48:29.986 c.k.s.t.r.RuleManageController.updateRule[160] - ## Entrance Tms RuleManageController updateRule
+▶  DEBUG 14:48:36.798 c.k.s.t.r.RuleManageService.updateRule[101] - ## Entrance Tms RuleManageService updateRule
+▶  DEBUG 14:48:36.798 c.k.s.t.r.RuleManageService.updateRule[102] - ## Entrance Tms RuleManageService updateRule
+{STS_CHANGE=, RUL_CD=101, RUL_GRD=2, RULSUM=, RULCHU=01, RUL_SCR=, RUL_STS=2, RUL_NM=고객/01_고령자, RUL_DEF=3개월 이상 연체된 고객이 해당월에 현금 또는 가상계좌를 통해 1000만원 이상을 입금한 경우12, RUL_NOTE=장기간 연체 상환, RUL_REFER=장기간 연체 상환, FACTOR1_NM=, FACTOR2_NM=, FACTOR3_NM=, FACTOR4_NM=, FACTOR5_NM=, FACTOR6_NM=, FACTOR1=, FACTOR2=, FACTOR3=, FACTOR4=, FACTOR5=, FACTOR6=, FCON1=, FCON2=, FCON3=, FCON4=, FCON5=, FCON6=, USR_ID=205026, USR_NM=김미라}
+▶  DEBUG 14:48:36.799 c.k.s.c.d.DAO.printQueryId[42] - 	 SQL ID 	:  tms.ruleManage.updateRuleInfo
+▶  DEBUG 14:48:36.799 t.r.updateRuleInfo.debug[159] - ==>  Preparing: /* STR600-mapper.updateRuleInfo */ UPDATE TMS_RULE_INFO SET RUL_NM = ? /* 룰명칭 */ ,RUL_GB = 'R' /* 룰속성 */ ,RUL_GRD = ? /* 룰등급 */ ,RULGO = NVL(?,?) /* 고객구분(0:공통,1:개인,2:법인) */ ,GR_CD = ? /* 대분류코드 */ ,MD_CD = ? /* 중분류코드 */ ,CM_CD = ?||'2' /* 소분류코드 */ ,RUL_DEF = ? /* 룰명세 */ ,RUL_NOTE = ? /* 룰추론기반 */ ,RUL_REFER = ? /* 룰참조사례 */ ,RUL_STS = ? /* 룰상태(1:대기,2:승인) RULE 사용여부 컬럼 1미사용 2 사용*/ ,CHG_RSN = ? /* 변경사유 */ ,TY_CD = ? /* 룰구분 */ ,RUL_SQL = ? /* 룰로직 */ ,RUL_PREVIEW = ? /* 룰로직2 */ ,RULSUM = ? /* SUMMARY 기준 */ ,RULCHU = ? /* 추출주기(01:일,02:주,03:월,04:년) */ ,RUL_SCR = ? /* 룰점수(메리츠 추가) */ ,PREMISE_CRIME = ? /* 전제범죄유형 */ ,UPD_ID = ? /* 최종수정ID */ ,UPD_DT = SYSDATE /* 최종수정일자 */ WHERE RUL_CD = ?
+▶  DEBUG 14:48:36.800 t.r.updateRuleInfo.debug[159] - ==> Parameters: 고객/01_고령자(String), 2(String), null, null, null, 101(String), 101(String), 3개월 이상 연체된 고객이 해당월에 현금 또는 가상계좌를 통해 1000만원 이상을 입금한 경우12(String), 장기간 연체 상환(String), 장기간 연체 상환(String), 2(String), null, null, null, null, (String), 01(String), (String), null, 205026(String), 101(String)
+▶  DEBUG 14:48:36.800 j.sqlonly.sqlOccurred[223] -  sun.reflect.GeneratedMethodAccessor94.invoke(null:-1)
+41. /* STR600-mapper.updateRuleInfo */
+		UPDATE TMS_RULE_INFO SET
+			RUL_NM 			= '고객/01_고령자'			/* 룰명칭 */
+						   ,RUL_GB 			= 'R'          /* 룰속성 */
+						   ,RUL_GRD			= '2'         /* 룰등급 */
+						   ,RULGO			= NVL(NULL,NULL)			/* 고객구분(0:공통,1:개인,2:법인) */
+						   ,GR_CD			= NULL           /* 대분류코드 */
+						   ,MD_CD			= '101'           /* 중분류코드 */
+						   ,CM_CD			= '101'||'2'           /* 소분류코드 */
+						   ,RUL_DEF			= '3개월 이상 연체된 고객이 해당월에 현금 또는 가상계좌를 통해 1000만원 이상을 입금한 경우12'         /* 룰명세 */
+						   ,RUL_NOTE			= '장기간 연체 상환'        /* 룰추론기반 */
+						   ,RUL_REFER		= '장기간 연체 상환'       /* 룰참조사례 */
+						   ,RUL_STS			= '2'			/* 룰상태(1:대기,2:승인) RULE 사용여부 컬럼 1미사용 2 사용*/
+						   ,CHG_RSN			= NULL         /* 변경사유 */
+						   ,TY_CD			= NULL           /* 룰구분 */
+						   ,RUL_SQL			= NULL         /* 룰로직 */
+						   ,RUL_PREVIEW		= NULL     /* 룰로직2 */
+						   ,RULSUM			= ''          /* SUMMARY 기준 */
+						   ,RULCHU			= '01'			/* 추출주기(01:일,02:주,03:월,04:년) */
+						   ,RUL_SCR			= ''         /* 룰점수(메리츠 추가) */
+						   ,PREMISE_CRIME	= NULL   /* 전제범죄유형 */
+						   ,UPD_ID			= '205026'          /* 최종수정ID */
+						   ,UPD_DT			= SYSDATE           /* 최종수정일자 */
+		WHERE RUL_CD = '101'
+
+▶  DEBUG 14:48:36.806 t.r.updateRuleInfo.debug[159] - <==    Updates: 1
+▶  DEBUG 14:48:36.807 c.k.s.c.d.DAO.printQueryId[42] - 	 SQL ID 	:  tms.ruleManage.mergeIntoRuleCond
+▶  DEBUG 14:48:36.807 t.r.mergeIntoRuleCond.debug[159] - ==>  Preparing: /* STR600-mapper.mergeIntoRuleCond */ MERGE INTO TMS_RULE_COND TA USING DUAL ON ( RUL_GRCD = 'rule' AND RUL_CD = ? AND RUL_GO = ? ) WHEN MATCHED THEN UPDATE SET FACTOR1 = ? /* 조정변수1 */ ,FACTOR2 = ? /* 조정변수2 */ ,FACTOR3 = ? /* 조정변수3 */ ,FACTOR4 = ? /* 조정변수4 */ ,FACTOR5 = ? /* 조정변수5 */ ,FACTOR6 = ? /* 조정변수6 */ ,FDATE = ? /* 생성일자 */ ,SDATE = ? /* 거래일자 */ ,ETC = ? /* 비고 */ ,RUL_STS = ? /* 룰상세 */ ,RUL_SQL = ? /* 룰로직 */ ,FACTOR1_NM = ? /* 변수명1 */ ,FACTOR2_NM = ? /* 변수명2 */ ,FACTOR3_NM = ? /* 변수명3 */ ,FACTOR4_NM = ? /* 변수명4 */ ,FACTOR5_NM = ? /* 변수명5 */ ,FACTOR6_NM = ? /* 변수명6 */ ,SNO = ? /* 순번 */ ,FCON1 = ? /* 조건명1 */ ,FCON2 = ? /* 조건명2 */ ,FCON3 = ? /* 조건명3 */ ,FCON4 = ? /* 조건명4 */ ,FCON5 = ? /* 조건명5 */ ,FCON6 = ? /* 조건명6 */ ,DETAIL_GB = ? /* 상세구분 */ ,PROCSQL = ? /* Proc Run SQL */ WHEN NOT MATCHED THEN INSERT ( RUL_GRCD , RUL_CD , RUL_GO , FACTOR1 , FACTOR2 , FACTOR3 , FACTOR4 , FACTOR5 , FACTOR6 , FDATE , SDATE , ETC , RUL_STS , RUL_SQL , FACTOR1_NM , FACTOR2_NM , FACTOR3_NM , FACTOR4_NM , FACTOR5_NM , FACTOR6_NM , SNO , FCON1 , FCON2 , FCON3 , FCON4 , FCON5 , FCON6 , DETAIL_GB , PROCSQL ) VALUES ( 'rule' /* 분류코드 */ , ? /* 룰코드 */ , ? /* 개인/법인 구분 */ , ? /* 조정변수1 */ , ? /* 조정변수2 */ , ? /* 조정변수3 */ , ? /* 조정변수4 */ , ? /* 조정변수5 */ , ? /* 조정변수6 */ , ? /* 생성일자 */ , ? /* 거래일자 */ , ? /* 비고 */ , ? /* 룰상세 */ , ? /* 룰로직 */ , ? /* 변수명1 */ , ? /* 변수명2 */ , ? /* 변수명3 */ , ? /* 변수명4 */ , ? /* 변수명5 */ , ? /* 변수명6 */ , ? /* 순번 */ , ? /* 조건명1 */ , ? /* 조건명2 */ , ? /* 조건명3 */ , ? /* 조건명4 */ , ? /* 조건명5 */ , ? /* 조건명6 */ , ? /* 상세구분 */ , ? /* Proc Run SQL */ )
+▶  DEBUG 14:48:36.809 t.r.mergeIntoRuleCond.debug[159] - ==> Parameters: 101(String), null, (String), (String), (String), (String), (String), (String), null, null, null, 2(String), null, (String), (String), (String), (String), (String), (String), null, (String), (String), (String), (String), (String), (String), null, null, 101(String), null, (String), (String), (String), (String), (String), (String), null, null, null, 2(String), null, (String), (String), (String), (String), (String), (String), null, (String), (String), (String), (String), (String), (String), null, null
+▶  DEBUG 14:48:36.810 j.sqlonly.sqlOccurred[223] -  sun.reflect.GeneratedMethodAccessor94.invoke(null:-1)
+41. /* STR600-mapper.mergeIntoRuleCond */
+		MERGE INTO TMS_RULE_COND TA
+		USING DUAL ON ( 	RUL_GRCD = 'rule'
+						AND RUL_CD   = '101'
+						AND RUL_GO   = NULL
+					  )
+		 WHEN MATCHED THEN
+	   UPDATE
+		  SET FACTOR1      = ''				/* 조정변수1 */
+			  ,FACTOR2     = ''				/* 조정변수2 */
+			  ,FACTOR3     = ''				/* 조정변수3 */
+			  ,FACTOR4     = ''				/* 조정변수4 */
+			  ,FACTOR5     = ''				/* 조정변수5 */
+			  ,FACTOR6     = ''				/* 조정변수6 */
+			  ,FDATE       = NULL				/* 생성일자 */
+			  ,SDATE       = NULL				/* 거래일자 */
+			  ,ETC         = NULL					/* 비고 */
+			  ,RUL_STS     = '2'				/* 룰상세 */
+			  ,RUL_SQL     = NULL				/* 룰로직 */
+			  ,FACTOR1_NM  = ''			/* 변수명1 */
+			  ,FACTOR2_NM  = ''			/* 변수명2 */
+			  ,FACTOR3_NM  = ''			/* 변수명3 */
+			  ,FACTOR4_NM  = ''			/* 변수명4 */
+			  ,FACTOR5_NM  = ''			/* 변수명5 */
+			  ,FACTOR6_NM  = ''			/* 변수명6 */
+			  ,SNO         = NULL					/* 순번 */
+			  ,FCON1       = ''				/* 조건명1 */
+			  ,FCON2       = ''				/* 조건명2 */
+			  ,FCON3       = ''				/* 조건명3 */
+			  ,FCON4       = ''				/* 조건명4 */
+			  ,FCON5       = ''				/* 조건명5 */
+			  ,FCON6       = ''				/* 조건명6 */
+			  ,DETAIL_GB   = NULL			/* 상세구분 */
+			  ,PROCSQL     = NULL				/* Proc Run SQL */
+	     WHEN NOT MATCHED THEN
+	   INSERT
+	   		  ( RUL_GRCD
+			  , RUL_CD
+			  , RUL_GO
+			  , FACTOR1
+			  , FACTOR2
+			  , FACTOR3
+			  , FACTOR4
+			  , FACTOR5
+			  , FACTOR6
+			  , FDATE
+			  , SDATE
+			  , ETC
+			  , RUL_STS
+			  , RUL_SQL
+			  , FACTOR1_NM
+			  , FACTOR2_NM
+			  , FACTOR3_NM
+			  , FACTOR4_NM
+			  , FACTOR5_NM
+			  , FACTOR6_NM
+			  , SNO
+			  , FCON1
+			  , FCON2
+			  , FCON3
+			  , FCON4
+			  , FCON5
+			  , FCON6
+			  , DETAIL_GB
+			  , PROCSQL
+			  )
+	   VALUES
+			  ( 'rule'					/* 분류코드 */
+			  , '101'				/* 룰코드 */
+			  , NULL				/* 개인/법인 구분 */
+			  , ''				/* 조정변수1 */
+			  , ''				/* 조정변수2 */
+			  , ''				/* 조정변수3 */
+			  , ''				/* 조정변수4 */
+			  , ''				/* 조정변수5 */
+			  , ''				/* 조정변수6 */
+			  , NULL				/* 생성일자 */
+			  , NULL				/* 거래일자 */
+			  , NULL					/* 비고 */
+			  , '2'				/* 룰상세 */
+			  , NULL				/* 룰로직 */
+			  , ''			/* 변수명1 */
+			  , ''			/* 변수명2 */
+			  , ''			/* 변수명3 */
+			  , ''			/* 변수명4 */
+			  , ''			/* 변수명5 */
+			  , ''			/* 변수명6 */
+			  , NULL					/* 순번 */
+			  , ''				/* 조건명1 */
+			  , ''				/* 조건명2 */
+			  , ''				/* 조건명3 */
+			  , ''				/* 조건명4 */
+			  , ''				/* 조건명5 */
+			  , ''				/* 조건명6 */
+			  , NULL			/* 상세구분 */
+			  , NULL				/* Proc Run SQL */
+			  )
+
+▶  ERROR 14:48:36.840 j.sqlonly.exceptionOccured[140] -  sun.reflect.GeneratedMethodAccessor94.invoke(null:-1)
+41. /* STR600-mapper.mergeIntoRuleCond */
+		MERGE INTO TMS_RULE_COND TA
+		USING DUAL ON ( 	RUL_GRCD = 'rule'
+						AND RUL_CD   = '101'
+						AND RUL_GO   = NULL
+					  )
+		 WHEN MATCHED THEN
+	   UPDATE
+		  SET FACTOR1      = ''				/* 조정변수1 */
+			  ,FACTOR2     = ''				/* 조정변수2 */
+			  ,FACTOR3     = ''				/* 조정변수3 */
+			  ,FACTOR4     = ''				/* 조정변수4 */
+			  ,FACTOR5     = ''				/* 조정변수5 */
+			  ,FACTOR6     = ''				/* 조정변수6 */
+			  ,FDATE       = NULL				/* 생성일자 */
+			  ,SDATE       = NULL				/* 거래일자 */
+			  ,ETC         = NULL					/* 비고 */
+			  ,RUL_STS     = '2'				/* 룰상세 */
+			  ,RUL_SQL     = NULL				/* 룰로직 */
+			  ,FACTOR1_NM  = ''			/* 변수명1 */
+			  ,FACTOR2_NM  = ''			/* 변수명2 */
+			  ,FACTOR3_NM  = ''			/* 변수명3 */
+			  ,FACTOR4_NM  = ''			/* 변수명4 */
+			  ,FACTOR5_NM  = ''			/* 변수명5 */
+			  ,FACTOR6_NM  = ''			/* 변수명6 */
+			  ,SNO         = NULL					/* 순번 */
+			  ,FCON1       = ''				/* 조건명1 */
+			  ,FCON2       = ''				/* 조건명2 */
+			  ,FCON3       = ''				/* 조건명3 */
+			  ,FCON4       = ''				/* 조건명4 */
+			  ,FCON5       = ''				/* 조건명5 */
+			  ,FCON6       = ''				/* 조건명6 */
+			  ,DETAIL_GB   = NULL			/* 상세구분 */
+			  ,PROCSQL     = NULL				/* Proc Run SQL */
+	     WHEN NOT MATCHED THEN
+	   INSERT
+	   		  ( RUL_GRCD
+			  , RUL_CD
+			  , RUL_GO
+			  , FACTOR1
+			  , FACTOR2
+			  , FACTOR3
+			  , FACTOR4
+			  , FACTOR5
+			  , FACTOR6
+			  , FDATE
+			  , SDATE
+			  , ETC
+			  , RUL_STS
+			  , RUL_SQL
+			  , FACTOR1_NM
+			  , FACTOR2_NM
+			  , FACTOR3_NM
+			  , FACTOR4_NM
+			  , FACTOR5_NM
+			  , FACTOR6_NM
+			  , SNO
+			  , FCON1
+			  , FCON2
+			  , FCON3
+			  , FCON4
+			  , FCON5
+			  , FCON6
+			  , DETAIL_GB
+			  , PROCSQL
+			  )
+	   VALUES
+			  ( 'rule'					/* 분류코드 */
+			  , '101'				/* 룰코드 */
+			  , NULL				/* 개인/법인 구분 */
+			  , ''				/* 조정변수1 */
+			  , ''				/* 조정변수2 */
+			  , ''				/* 조정변수3 */
+			  , ''				/* 조정변수4 */
+			  , ''				/* 조정변수5 */
+			  , ''				/* 조정변수6 */
+			  , NULL				/* 생성일자 */
+			  , NULL				/* 거래일자 */
+			  , NULL					/* 비고 */
+			  , '2'				/* 룰상세 */
+			  , NULL				/* 룰로직 */
+			  , ''			/* 변수명1 */
+			  , ''			/* 변수명2 */
+			  , ''			/* 변수명3 */
+			  , ''			/* 변수명4 */
+			  , ''			/* 변수명5 */
+			  , ''			/* 변수명6 */
+			  , NULL					/* 순번 */
+			  , ''				/* 조건명1 */
+			  , ''				/* 조건명2 */
+			  , ''				/* 조건명3 */
+			  , ''				/* 조건명4 */
+			  , ''				/* 조건명5 */
+			  , ''				/* 조건명6 */
+			  , NULL			/* 상세구분 */
+			  , NULL				/* Proc Run SQL */
+			  )
+
+java.sql.SQLIntegrityConstraintViolationException: ORA-00001: 무결성 제약 조건(RBADBC.TMS_RULE_COND_PK)에 위배됩니다
+
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:494)
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:446)
+	at oracle.jdbc.driver.T4C8Oall.processError(T4C8Oall.java:1054)
+	at oracle.jdbc.driver.T4CTTIfun.receive(T4CTTIfun.java:623)
+	at oracle.jdbc.driver.T4CTTIfun.doRPC(T4CTTIfun.java:252)
+	at oracle.jdbc.driver.T4C8Oall.doOALL(T4C8Oall.java:612)
+	at oracle.jdbc.driver.T4CPreparedStatement.doOall8(T4CPreparedStatement.java:226)
+	at oracle.jdbc.driver.T4CPreparedStatement.doOall8(T4CPreparedStatement.java:59)
+	at oracle.jdbc.driver.T4CPreparedStatement.executeForRows(T4CPreparedStatement.java:910)
+	at oracle.jdbc.driver.OracleStatement.doExecuteWithTimeout(OracleStatement.java:1119)
+	at oracle.jdbc.driver.OraclePreparedStatement.executeInternal(OraclePreparedStatement.java:3780)
+	at oracle.jdbc.driver.T4CPreparedStatement.executeInternal(T4CPreparedStatement.java:1343)
+	at oracle.jdbc.driver.OraclePreparedStatement.execute(OraclePreparedStatement.java:3887)
+	at oracle.jdbc.driver.OraclePreparedStatementWrapper.execute(OraclePreparedStatementWrapper.java:1079)
+	at net.sf.log4jdbc.sql.jdbcapi.PreparedStatementSpy.execute(PreparedStatementSpy.java:443)
+	at sun.reflect.GeneratedMethodAccessor94.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.apache.ibatis.logging.jdbc.PreparedStatementLogger.invoke(PreparedStatementLogger.java:59)
+	at com.sun.proxy.$Proxy43.execute(Unknown Source)
+	at org.apache.ibatis.executor.statement.PreparedStatementHandler.update(PreparedStatementHandler.java:46)
+	at org.apache.ibatis.executor.statement.RoutingStatementHandler.update(RoutingStatementHandler.java:74)
+	at org.apache.ibatis.executor.SimpleExecutor.doUpdate(SimpleExecutor.java:50)
+	at org.apache.ibatis.executor.BaseExecutor.update(BaseExecutor.java:117)
+	at org.apache.ibatis.executor.CachingExecutor.update(CachingExecutor.java:76)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.update(DefaultSqlSession.java:198)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.insert(DefaultSqlSession.java:185)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:433)
+	at com.sun.proxy.$Proxy19.insert(Unknown Source)
+	at org.mybatis.spring.SqlSessionTemplate.insert(SqlSessionTemplate.java:278)
+	at com.kolin.sk.common.dao.DAO.insert(DAO.java:58)
+	at com.kolin.sk.tms.ruleManage.RuleManageService.updateRule(RuleManageService.java:105)
+	at com.kolin.sk.tms.ruleManage.RuleManageService$$FastClassBySpringCGLIB$$b3a4d4e3.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:204)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:736)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:157)
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:99)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:282)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:96)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:92)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:671)
+	at com.kolin.sk.tms.ruleManage.RuleManageService$$EnhancerBySpringCGLIB$$850231a8.updateRule(<generated>)
+	at com.kolin.sk.tms.ruleManage.RuleManageController.updateRule(RuleManageController.java:189)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:133)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:97)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:849)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:760)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:85)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:967)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:901)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:970)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:872)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:648)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:846)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:729)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:292)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:240)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:197)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:240)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:212)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:94)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:492)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:141)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:80)
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:620)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:88)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:502)
+	at org.apache.coyote.http11.AbstractHttp11Processor.process(AbstractHttp11Processor.java:1152)
+	at org.apache.coyote.AbstractProtocol$AbstractConnectionHandler.process(AbstractProtocol.java:684)
+	at org.apache.tomcat.util.net.AprEndpoint$SocketProcessor.doRun(AprEndpoint.java:2527)
+	at org.apache.tomcat.util.net.AprEndpoint$SocketProcessor.run(AprEndpoint.java:2516)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: oracle.jdbc.OracleDatabaseException: ORA-00001: 무결성 제약 조건(RBADBC.TMS_RULE_COND_PK)에 위배됩니다
+
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:498)
+	... 90 common frames omitted
+▶  DEBUG 14:48:36.936 o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver.doResolveHandlerMethodException[376] - Invoking @ExceptionHandler method: public java.lang.String com.kolin.sk.common.exception.ExceptionControllerAdvice.handleAnyException(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse,java.lang.Exception)
+▶  DEBUG 14:48:36.936 c.k.s.c.e.ExceptionControllerAdvice.handleAnyException[56] - ## Entrance ExceptionControllerAdvice handleAnyException
+## ExceptionControllerAdvice => Exception Normal
+org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator.doTranslate( SQLErrorCodeSQLExceptionTranslator.java:239 )
+org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate( AbstractFallbackSQLExceptionTranslator.java:73 )
+org.mybatis.spring.MyBatisExceptionTranslator.translateExceptionIfPossible( MyBatisExceptionTranslator.java:73 )
+org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke( SqlSessionTemplate.java:446 )
+com.sun.proxy.$Proxy19.insert( null:-1 )
+org.mybatis.spring.SqlSessionTemplate.insert( SqlSessionTemplate.java:278 )
+com.kolin.sk.common.dao.DAO.insert( DAO.java:58 )
+com.kolin.sk.tms.ruleManage.RuleManageService.updateRule( RuleManageService.java:105 )
+com.kolin.sk.tms.ruleManage.RuleManageService$$FastClassBySpringCGLIB$$b3a4d4e3.invoke( <generated>:-1 )
+org.springframework.cglib.proxy.MethodProxy.invoke( MethodProxy.java:204 )
+org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint( Cglib...
+## LOG PARAMS {actErrMsg=org.springframework.dao.DuplicateKeyException:
+### Error updating database.  Cause: java.sql.SQLIntegrityConstraintViolationException: ORA-00001: 무결성 제약 조건(RBADBC.TMS_RULE_COND_PK)에 위배됩니다
+
+### The error may involve tms.ruleManage.mergeIntoRuleCond-Inline
+### The error occurred while setting parameters
+### SQL: /* STR600-mapper.mergeIntoRuleCond */   MERGE INTO TMS_RULE_COND TA   USING DUAL ON (  RUL_GRCD = 'rule'       AND RUL_CD   = ?       AND RUL_GO   = ?        )    WHEN MATCHED THEN     UPDATE     SET FACTOR1      = ?    /* 조정변수1 */      ,FACTOR2     = ?    /* 조정변수2 */      ,FACTOR3     = ?    /* 조정변수3 */      ,FACTOR4     = ?    /* 조정변수4 */      ,FACTOR5     = ?    /* 조정변수5 */      ,FACTOR6     = ?    /* 조정변수6 */      ,FDATE       = ?    /* 생성일자 */      ,SDATE       = ?    /* 거래일자 */      ,ETC         = ?     /* 비고 */      ,RUL_STS     = ?    /* 룰상세 */      ,RUL_SQL     = ..., actAgent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36, actReferer=http://localhost:8280/rba/main.do, actElapsedTime=, actAjaxYn=Y, sbCd=101, athrCd=0004, actTime=1578289716978, logGr=RBA, actHost=localhost:8280, empNo=205026, deptCd=900, actMethod=POST, actOs=Windows 10, actClientIp=127.0.0.1, actUri=/tms/ruleManage/updateRule.do, logGbn=PROCESS, actBrower=Chrome, actParam=STS_CHANGE=;RUL_CD=101;RUL_GRD=2;RULSUM=;RULCHU=01;RUL_SCR=;RUL_STS=2;RUL_NM=고객/01_고령자;RUL_DEF=3개월 이상 연체된 고객이 해당월에 현금 또는 가상계좌를 통해 1000만원 이상을 입금한 경우12;RUL_NOTE=장기간 연체 상환;RUL_REFER=장기간 연체 상환;FACTOR1_NM=;FACTOR2_NM=;FACTOR3_NM=;FACTOR4_NM=;FACTOR5_NM=;FACTOR6_NM=;FACTOR1=;FACTOR2=;FACTOR3=;FACTOR4=;FACTOR5=;FACTOR6=;FCON1=;FCON2=;FCON3=;FCON4=;FCON5=;FCON6=;, brchCd=005, actErrCd=500, actCtx=/rba, actErrDtlMsg=org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator.doTranslate( SQLErrorCodeSQLExceptionTranslator.java:239 )
+org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate( AbstractFallbackSQLExceptionTranslator.java:73 )
+org.mybatis.spring.MyBatisExceptionTranslator.translateExceptionIfPossible( MyBatisExceptionTranslator.java:73 )
+org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke( SqlSessionTemplate.java:446 )
+com.sun.proxy.$Proxy19.insert( null:-1 )
+org.mybatis.spring.SqlSessionTemplate.insert( SqlSessionTemplate.java:278 )
+com.kolin.sk.common.dao.DAO.insert( DAO.java:58 )
+com.kolin.sk.tms.ruleManage.RuleManageService.updateRule( RuleManageService.java:105 )
+com.kolin.sk.tms.ruleManage.RuleManageService$$FastClassBySpringCGLIB$$b3a4d4e3.invoke( <generated>:-1 )
+org.springframework.cglib.proxy.MethodProxy.invoke( MethodProxy.java:204 )
+org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint( Cglib...}
+▶  WARN  14:48:36.985 o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver.resolveException[136] - Resolved [org.springframework.dao.DuplicateKeyException:
+### Error updating database.  Cause: java.sql.SQLIntegrityConstraintViolationException: ORA-00001: 무결성 제약 조건(RBADBC.TMS_RULE_COND_PK)에 위배됩니다
+
+### The error may involve tms.ruleManage.mergeIntoRuleCond-Inline
+### The error occurred while setting parameters
+### SQL: /* STR600-mapper.mergeIntoRuleCond */   MERGE INTO TMS_RULE_COND TA   USING DUAL ON (  RUL_GRCD = 'rule'       AND RUL_CD   = ?       AND RUL_GO   = ?        )    WHEN MATCHED THEN     UPDATE     SET FACTOR1      = ?    /* 조정변수1 */      ,FACTOR2     = ?    /* 조정변수2 */      ,FACTOR3     = ?    /* 조정변수3 */      ,FACTOR4     = ?    /* 조정변수4 */      ,FACTOR5     = ?    /* 조정변수5 */      ,FACTOR6     = ?    /* 조정변수6 */      ,FDATE       = ?    /* 생성일자 */      ,SDATE       = ?    /* 거래일자 */      ,ETC         = ?     /* 비고 */      ,RUL_STS     = ?    /* 룰상세 */      ,RUL_SQL     = ?    /* 룰로직 */      ,FACTOR1_NM  = ?   /* 변수명1 */      ,FACTOR2_NM  = ?   /* 변수명2 */      ,FACTOR3_NM  = ?   /* 변수명3 */      ,FACTOR4_NM  = ?   /* 변수명4 */      ,FACTOR5_NM  = ?   /* 변수명5 */      ,FACTOR6_NM  = ?   /* 변수명6 */      ,SNO         = ?     /* 순번 */      ,FCON1       = ?    /* 조건명1 */      ,FCON2       = ?    /* 조건명2 */      ,FCON3       = ?    /* 조건명3 */      ,FCON4       = ?    /* 조건명4 */      ,FCON5       = ?    /* 조건명5 */      ,FCON6       = ?    /* 조건명6 */      ,DETAIL_GB   = ?   /* 상세구분 */      ,PROCSQL     = ?    /* Proc Run SQL */       WHEN NOT MATCHED THEN     INSERT         ( RUL_GRCD      , RUL_CD      , RUL_GO      , FACTOR1      , FACTOR2      , FACTOR3      , FACTOR4      , FACTOR5      , FACTOR6      , FDATE      , SDATE      , ETC      , RUL_STS      , RUL_SQL      , FACTOR1_NM      , FACTOR2_NM      , FACTOR3_NM      , FACTOR4_NM      , FACTOR5_NM      , FACTOR6_NM      , SNO      , FCON1      , FCON2      , FCON3      , FCON4      , FCON5      , FCON6      , DETAIL_GB      , PROCSQL      )     VALUES      ( 'rule'     /* 분류코드 */      , ?    /* 룰코드 */      , ?    /* 개인/법인 구분 */      , ?    /* 조정변수1 */      , ?    /* 조정변수2 */      , ?    /* 조정변수3 */      , ?    /* 조정변수4 */      , ?    /* 조정변수5 */      , ?    /* 조정변수6 */      , ?    /* 생성일자 */      , ?    /* 거래일자 */      , ?     /* 비고 */      , ?    /* 룰상세 */      , ?    /* 룰로직 */      , ?   /* 변수명1 */      , ?   /* 변수명2 */      , ?   /* 변수명3 */      , ?   /* 변수명4 */      , ?   /* 변수명5 */      , ?   /* 변수명6 */      , ?     /* 순번 */      , ?    /* 조건명1 */      , ?    /* 조건명2 */      , ?    /* 조건명3 */      , ?    /* 조건명4 */      , ?    /* 조건명5 */      , ?    /* 조건명6 */      , ?   /* 상세구분 */      , ?    /* Proc Run SQL */      )
+### Cause: java.sql.SQLIntegrityConstraintViolationException: ORA-00001: 무결성 제약 조건(RBADBC.TMS_RULE_COND_PK)에 위배됩니다
+
+; SQL []; ORA-00001: 무결성 제약 조건(RBADBC.TMS_RULE_COND_PK)에 위배됩니다
+; nested exception is java.sql.SQLIntegrityConstraintViolationException: ORA-00001: 무결성 제약 조건(RBADBC.TMS_RULE_COND_PK)에 위배됩니다
+] to ModelAndView: reference to view with name 'forward:/common/error/handleAnyJsonException.do'; model is {}
+▶  DEBUG 14:48:36.985 o.s.w.s.DispatcherServlet.processHandlerException[1237] - Handler execution resulted in exception - forwarding to resolved error view: ModelAndView: reference to view with name 'forward:/common/error/handleAnyJsonException.do'; model is {}
+org.springframework.dao.DuplicateKeyException:
+### Error updating database.  Cause: java.sql.SQLIntegrityConstraintViolationException: ORA-00001: 무결성 제약 조건(RBADBC.TMS_RULE_COND_PK)에 위배됩니다
+
+### The error may involve tms.ruleManage.mergeIntoRuleCond-Inline
+### The error occurred while setting parameters
+### SQL: /* STR600-mapper.mergeIntoRuleCond */   MERGE INTO TMS_RULE_COND TA   USING DUAL ON (  RUL_GRCD = 'rule'       AND RUL_CD   = ?       AND RUL_GO   = ?        )    WHEN MATCHED THEN     UPDATE     SET FACTOR1      = ?    /* 조정변수1 */      ,FACTOR2     = ?    /* 조정변수2 */      ,FACTOR3     = ?    /* 조정변수3 */      ,FACTOR4     = ?    /* 조정변수4 */      ,FACTOR5     = ?    /* 조정변수5 */      ,FACTOR6     = ?    /* 조정변수6 */      ,FDATE       = ?    /* 생성일자 */      ,SDATE       = ?    /* 거래일자 */      ,ETC         = ?     /* 비고 */      ,RUL_STS     = ?    /* 룰상세 */      ,RUL_SQL     = ?    /* 룰로직 */      ,FACTOR1_NM  = ?   /* 변수명1 */      ,FACTOR2_NM  = ?   /* 변수명2 */      ,FACTOR3_NM  = ?   /* 변수명3 */      ,FACTOR4_NM  = ?   /* 변수명4 */      ,FACTOR5_NM  = ?   /* 변수명5 */      ,FACTOR6_NM  = ?   /* 변수명6 */      ,SNO         = ?     /* 순번 */      ,FCON1       = ?    /* 조건명1 */      ,FCON2       = ?    /* 조건명2 */      ,FCON3       = ?    /* 조건명3 */      ,FCON4       = ?    /* 조건명4 */      ,FCON5       = ?    /* 조건명5 */      ,FCON6       = ?    /* 조건명6 */      ,DETAIL_GB   = ?   /* 상세구분 */      ,PROCSQL     = ?    /* Proc Run SQL */       WHEN NOT MATCHED THEN     INSERT         ( RUL_GRCD      , RUL_CD      , RUL_GO      , FACTOR1      , FACTOR2      , FACTOR3      , FACTOR4      , FACTOR5      , FACTOR6      , FDATE      , SDATE      , ETC      , RUL_STS      , RUL_SQL      , FACTOR1_NM      , FACTOR2_NM      , FACTOR3_NM      , FACTOR4_NM      , FACTOR5_NM      , FACTOR6_NM      , SNO      , FCON1      , FCON2      , FCON3      , FCON4      , FCON5      , FCON6      , DETAIL_GB      , PROCSQL      )     VALUES      ( 'rule'     /* 분류코드 */      , ?    /* 룰코드 */      , ?    /* 개인/법인 구분 */      , ?    /* 조정변수1 */      , ?    /* 조정변수2 */      , ?    /* 조정변수3 */      , ?    /* 조정변수4 */      , ?    /* 조정변수5 */      , ?    /* 조정변수6 */      , ?    /* 생성일자 */      , ?    /* 거래일자 */      , ?     /* 비고 */      , ?    /* 룰상세 */      , ?    /* 룰로직 */      , ?   /* 변수명1 */      , ?   /* 변수명2 */      , ?   /* 변수명3 */      , ?   /* 변수명4 */      , ?   /* 변수명5 */      , ?   /* 변수명6 */      , ?     /* 순번 */      , ?    /* 조건명1 */      , ?    /* 조건명2 */      , ?    /* 조건명3 */      , ?    /* 조건명4 */      , ?    /* 조건명5 */      , ?    /* 조건명6 */      , ?   /* 상세구분 */      , ?    /* Proc Run SQL */      )
+### Cause: java.sql.SQLIntegrityConstraintViolationException: ORA-00001: 무결성 제약 조건(RBADBC.TMS_RULE_COND_PK)에 위배됩니다
+
+; SQL []; ORA-00001: 무결성 제약 조건(RBADBC.TMS_RULE_COND_PK)에 위배됩니다
+; nested exception is java.sql.SQLIntegrityConstraintViolationException: ORA-00001: 무결성 제약 조건(RBADBC.TMS_RULE_COND_PK)에 위배됩니다
+
+	at org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator.doTranslate(SQLErrorCodeSQLExceptionTranslator.java:239)
+	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:73)
+	at org.mybatis.spring.MyBatisExceptionTranslator.translateExceptionIfPossible(MyBatisExceptionTranslator.java:73)
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:446)
+	at com.sun.proxy.$Proxy19.insert(Unknown Source)
+	at org.mybatis.spring.SqlSessionTemplate.insert(SqlSessionTemplate.java:278)
+	at com.kolin.sk.common.dao.DAO.insert(DAO.java:58)
+	at com.kolin.sk.tms.ruleManage.RuleManageService.updateRule(RuleManageService.java:105)
+	at com.kolin.sk.tms.ruleManage.RuleManageService$$FastClassBySpringCGLIB$$b3a4d4e3.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:204)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:736)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:157)
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:99)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:282)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:96)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:92)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:671)
+	at com.kolin.sk.tms.ruleManage.RuleManageService$$EnhancerBySpringCGLIB$$850231a8.updateRule(<generated>)
+	at com.kolin.sk.tms.ruleManage.RuleManageController.updateRule(RuleManageController.java:189)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:133)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:97)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:849)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:760)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:85)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:967)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:901)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:970)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:872)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:648)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:846)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:729)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:292)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:240)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:197)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:240)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:212)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:94)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:492)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:141)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:80)
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:620)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:88)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:502)
+	at org.apache.coyote.http11.AbstractHttp11Processor.process(AbstractHttp11Processor.java:1152)
+	at org.apache.coyote.AbstractProtocol$AbstractConnectionHandler.process(AbstractProtocol.java:684)
+	at org.apache.tomcat.util.net.AprEndpoint$SocketProcessor.doRun(AprEndpoint.java:2527)
+	at org.apache.tomcat.util.net.AprEndpoint$SocketProcessor.run(AprEndpoint.java:2516)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.sql.SQLIntegrityConstraintViolationException: ORA-00001: 무결성 제약 조건(RBADBC.TMS_RULE_COND_PK)에 위배됩니다
+
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:494)
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:446)
+	at oracle.jdbc.driver.T4C8Oall.processError(T4C8Oall.java:1054)
+	at oracle.jdbc.driver.T4CTTIfun.receive(T4CTTIfun.java:623)
+	at oracle.jdbc.driver.T4CTTIfun.doRPC(T4CTTIfun.java:252)
+	at oracle.jdbc.driver.T4C8Oall.doOALL(T4C8Oall.java:612)
+	at oracle.jdbc.driver.T4CPreparedStatement.doOall8(T4CPreparedStatement.java:226)
+	at oracle.jdbc.driver.T4CPreparedStatement.doOall8(T4CPreparedStatement.java:59)
+	at oracle.jdbc.driver.T4CPreparedStatement.executeForRows(T4CPreparedStatement.java:910)
+	at oracle.jdbc.driver.OracleStatement.doExecuteWithTimeout(OracleStatement.java:1119)
+	at oracle.jdbc.driver.OraclePreparedStatement.executeInternal(OraclePreparedStatement.java:3780)
+	at oracle.jdbc.driver.T4CPreparedStatement.executeInternal(T4CPreparedStatement.java:1343)
+	at oracle.jdbc.driver.OraclePreparedStatement.execute(OraclePreparedStatement.java:3887)
+	at oracle.jdbc.driver.OraclePreparedStatementWrapper.execute(OraclePreparedStatementWrapper.java:1079)
+	at net.sf.log4jdbc.sql.jdbcapi.PreparedStatementSpy.execute(PreparedStatementSpy.java:443)
+	at sun.reflect.GeneratedMethodAccessor94.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.apache.ibatis.logging.jdbc.PreparedStatementLogger.invoke(PreparedStatementLogger.java:59)
+	at com.sun.proxy.$Proxy43.execute(Unknown Source)
+	at org.apache.ibatis.executor.statement.PreparedStatementHandler.update(PreparedStatementHandler.java:46)
+	at org.apache.ibatis.executor.statement.RoutingStatementHandler.update(RoutingStatementHandler.java:74)
+	at org.apache.ibatis.executor.SimpleExecutor.doUpdate(SimpleExecutor.java:50)
+	at org.apache.ibatis.executor.BaseExecutor.update(BaseExecutor.java:117)
+	at org.apache.ibatis.executor.CachingExecutor.update(CachingExecutor.java:76)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.update(DefaultSqlSession.java:198)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.insert(DefaultSqlSession.java:185)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:433)
+	... 59 common frames omitted
+Caused by: oracle.jdbc.OracleDatabaseException: ORA-00001: 무결성 제약 조건(RBADBC.TMS_RULE_COND_PK)에 위배됩니다
+
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:498)
+	... 90 common frames omitted
+▶  DEBUG 14:48:36.991 o.s.w.s.DispatcherServlet.render[1280] - Rendering view [org.springframework.web.servlet.view.InternalResourceView: unnamed; URL [/common/error/handleAnyJsonException.do]] in DispatcherServlet with name 'appServlet'
+▶  DEBUG 14:48:36.991 o.s.w.s.v.InternalResourceView.renderMergedOutputModel[166] - Forwarding to resource [/common/error/handleAnyJsonException.do] in InternalResourceView 'null'
+▶  DEBUG 14:48:36.992 o.s.w.s.DispatcherServlet.doService[869] - DispatcherServlet with name 'appServlet' processing POST request for [/rba/common/error/handleAnyJsonException.do]
+▶  DEBUG 14:48:36.992 o.s.w.s.m.m.a.RequestMappingHandlerMapping.getHandlerInternal[310] - Looking up handler method for path /common/error/handleAnyJsonException.do
+▶  DEBUG 14:48:36.993 o.s.w.s.m.m.a.RequestMappingHandlerMapping.getHandlerInternal[317] - Returning handler method [public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> com.kolin.sk.common.exception.ExceptionController.handleAnyJsonException(javax.servlet.http.HttpServletRequest)]
+
+
+
+┌──────────── Parameters ──────────────────────────────────────────────────────────────────────────────────────────────
+│ STS_CHANGE :
+│ RUL_CD : 101
+│ RUL_GRD : 2
+│ RULSUM :
+│ RULCHU : 01
+│ RUL_SCR :
+│ RUL_STS : 2
+│ RUL_NM : 고객/01_고령자
+│ RUL_DEF : 3개월 이상 연체된 고객이 해당월에 현금 또는 가상계좌를 통해 1000만원 이상을 입금한 경우12
+│ RUL_NOTE : 장기간 연체 상환
+│ RUL_REFER : 장기간 연체 상환
+│ FACTOR1_NM :
+│ FACTOR2_NM :
+│ FACTOR3_NM :
+│ FACTOR4_NM :
+│ FACTOR5_NM :
+│ FACTOR6_NM :
+│ FACTOR1 :
+│ FACTOR2 :
+│ FACTOR3 :
+│ FACTOR4 :
+│ FACTOR5 :
+│ FACTOR6 :
+│ FCON1 :
+│ FCON2 :
+│ FCON3 :
+│ FCON4 :
+│ FCON5 :
+│ FCON6 :
+├──────────── Headers ─────────────────────────────────────────────────────────────────────────────────────────────────
+│ Uri Method     : POST /common/error/handleAnyJsonException.do
+└──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+## LOG PARAMS {actErrMsg=, actAgent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36, actReferer=http://localhost:8280/rba/main.do, actElapsedTime=, actAjaxYn=Y, sbCd=101, athrCd=0004, actTime=1578289717033, logGr=RBA, actHost=localhost:8280, empNo=205026, deptCd=900, actMethod=POST, actOs=Windows 10, actClientIp=127.0.0.1, actUri=/common/error/handleAnyJsonException.do, logGbn=PROCESS, actBrower=Chrome, actParam=STS_CHANGE=;RUL_CD=101;RUL_GRD=2;RULSUM=;RULCHU=01;RUL_SCR=;RUL_STS=2;RUL_NM=고객/01_고령자;RUL_DEF=3개월 이상 연체된 고객이 해당월에 현금 또는 가상계좌를 통해 1000만원 이상을 입금한 경우12;RUL_NOTE=장기간 연체 상환;RUL_REFER=장기간 연체 상환;FACTOR1_NM=;FACTOR2_NM=;FACTOR3_NM=;FACTOR4_NM=;FACTOR5_NM=;FACTOR6_NM=;FACTOR1=;FACTOR2=;FACTOR3=;FACTOR4=;FACTOR5=;FACTOR6=;FCON1=;FCON2=;FCON3=;FCON4=;FCON5=;FCON6=;, brchCd=005, actErrCd=, actCtx=/rba, actErrDtlMsg=}
+▶  DEBUG 14:48:37.041 c.k.s.c.e.ExceptionController.handleAnyJsonException[78] - ## Entrance Controler handleCustomException
+▶  DEBUG 14:48:37.142 o.s.w.s.m.m.a.HttpEntityMethodProcessor.writeWithMessageConverters[234] - Written [{exception=org.springframework.dao.DuplicateKeyException:
+### Error updating database.  Cause: java.sql.SQLIntegrityConstraintViolationException: ORA-00001: 무결성 제약 조건(RBADBC.TMS_RULE_COND_PK)에 위배됩니다
+
+### The error may involve tms.ruleManage.mergeIntoRuleCond-Inline
+### The error occurred while setting parameters
+### SQL: /* STR600-mapper.mergeIntoRuleCond */   MERGE INTO TMS_RULE_COND TA   USING DUAL ON (  RUL_GRCD = 'rule'       AND RUL_CD   = ?       AND RUL_GO   = ?        )    WHEN MATCHED THEN     UPDATE     SET FACTOR1      = ?    /* 조정변수1 */      ,FACTOR2     = ?    /* 조정변수2 */      ,FACTOR3     = ?    /* 조정변수3 */      ,FACTOR4     = ?    /* 조정변수4 */      ,FACTOR5     = ?    /* 조정변수5 */      ,FACTOR6     = ?    /* 조정변수6 */      ,FDATE       = ?    /* 생성일자 */      ,SDATE       = ?    /* 거래일자 */      ,ETC         = ?     /* 비고 */      ,RUL_STS     = ?    /* 룰상세 */      ,RUL_SQL     = ?    /* 룰로직 */      ,FACTOR1_NM  = ?   /* 변수명1 */      ,FACTOR2_NM  = ?   /* 변수명2 */      ,FACTOR3_NM  = ?   /* 변수명3 */      ,FACTOR4_NM  = ?   /* 변수명4 */      ,FACTOR5_NM  = ?   /* 변수명5 */      ,FACTOR6_NM  = ?   /* 변수명6 */      ,SNO         = ?     /* 순번 */      ,FCON1       = ?    /* 조건명1 */      ,FCON2       = ?    /* 조건명2 */      ,FCON3       = ?    /* 조건명3 */      ,FCON4       = ?    /* 조건명4 */      ,FCON5       = ?    /* 조건명5 */      ,FCON6       = ?    /* 조건명6 */      ,DETAIL_GB   = ?   /* 상세구분 */      ,PROCSQL     = ?    /* Proc Run SQL */       WHEN NOT MATCHED THEN     INSERT         ( RUL_GRCD      , RUL_CD      , RUL_GO      , FACTOR1      , FACTOR2      , FACTOR3      , FACTOR4      , FACTOR5      , FACTOR6      , FDATE      , SDATE      , ETC      , RUL_STS      , RUL_SQL      , FACTOR1_NM      , FACTOR2_NM      , FACTOR3_NM      , FACTOR4_NM      , FACTOR5_NM      , FACTOR6_NM      , SNO      , FCON1      , FCON2      , FCON3      , FCON4      , FCON5      , FCON6      , DETAIL_GB      , PROCSQL      )     VALUES      ( 'rule'     /* 분류코드 */      , ?    /* 룰코드 */      , ?    /* 개인/법인 구분 */      , ?    /* 조정변수1 */      , ?    /* 조정변수2 */      , ?    /* 조정변수3 */      , ?    /* 조정변수4 */      , ?    /* 조정변수5 */      , ?    /* 조정변수6 */      , ?    /* 생성일자 */      , ?    /* 거래일자 */      , ?     /* 비고 */      , ?    /* 룰상세 */      , ?    /* 룰로직 */      , ?   /* 변수명1 */      , ?   /* 변수명2 */      , ?   /* 변수명3 */      , ?   /* 변수명4 */      , ?   /* 변수명5 */      , ?   /* 변수명6 */      , ?     /* 순번 */      , ?    /* 조건명1 */      , ?    /* 조건명2 */      , ?    /* 조건명3 */      , ?    /* 조건명4 */      , ?    /* 조건명5 */      , ?    /* 조건명6 */      , ?   /* 상세구분 */      , ?    /* Proc Run SQL */      )
+### Cause: java.sql.SQLIntegrityConstraintViolationException: ORA-00001: 무결성 제약 조건(RBADBC.TMS_RULE_COND_PK)에 위배됩니다
+
+; SQL []; ORA-00001: 무결성 제약 조건(RBADBC.TMS_RULE_COND_PK)에 위배됩니다
+; nested exception is java.sql.SQLIntegrityConstraintViolationException: ORA-00001: 무결성 제약 조건(RBADBC.TMS_RULE_COND_PK)에 위배됩니다
+, status_code=500, json_message=null, exception_type=class org.springframework.dao.DuplicateKeyException, servlet_name=appServlet, json_code=null, message=
+### Error updating database.  Cause: java.sql.SQLIntegrityConstraintViolationException: ORA-00001: 무결성 제약 조건(RBADBC.TMS_RULE_COND_PK)에 위배됩니다
+
+### The error may involve tms.ruleManage.mergeIntoRuleCond-Inline
+### The error occurred while setting parameters
+### SQL: /* STR600-mapper.mergeIntoRuleCond */   MERGE INTO TMS_RULE_COND TA   USING DUAL ON (  RUL_GRCD = 'rule'       AND RUL_CD   = ?       AND RUL_GO   = ?        )    WHEN MATCHED THEN     UPDATE     SET FACTOR1      = ?    /* 조정변수1 */      ,FACTOR2     = ?    /* 조정변수2 */      ,FACTOR3     = ?    /* 조정변수3 */      ,FACTOR4     = ?    /* 조정변수4 */      ,FACTOR5     = ?    /* 조정변수5 */      ,FACTOR6     = ?    /* 조정변수6 */      ,FDATE       = ?    /* 생성일자 */      ,SDATE       = ?    /* 거래일자 */      ,ETC         = ?     /* 비고 */      ,RUL_STS     = ?    /* 룰상세 */      ,RUL_SQL     = ?    /* 룰로직 */      ,FACTOR1_NM  = ?   /* 변수명1 */      ,FACTOR2_NM  = ?   /* 변수명2 */      ,FACTOR3_NM  = ?   /* 변수명3 */      ,FACTOR4_NM  = ?   /* 변수명4 */      ,FACTOR5_NM  = ?   /* 변수명5 */      ,FACTOR6_NM  = ?   /* 변수명6 */      ,SNO         = ?     /* 순번 */      ,FCON1       = ?    /* 조건명1 */      ,FCON2       = ?    /* 조건명2 */      ,FCON3       = ?    /* 조건명3 */      ,FCON4       = ?    /* 조건명4 */      ,FCON5       = ?    /* 조건명5 */      ,FCON6       = ?    /* 조건명6 */      ,DETAIL_GB   = ?   /* 상세구분 */      ,PROCSQL     = ?    /* Proc Run SQL */       WHEN NOT MATCHED THEN     INSERT         ( RUL_GRCD      , RUL_CD      , RUL_GO      , FACTOR1      , FACTOR2      , FACTOR3      , FACTOR4      , FACTOR5      , FACTOR6      , FDATE      , SDATE      , ETC      , RUL_STS      , RUL_SQL      , FACTOR1_NM      , FACTOR2_NM      , FACTOR3_NM      , FACTOR4_NM      , FACTOR5_NM      , FACTOR6_NM      , SNO      , FCON1      , FCON2      , FCON3      , FCON4      , FCON5      , FCON6      , DETAIL_GB      , PROCSQL      )     VALUES      ( 'rule'     /* 분류코드 */      , ?    /* 룰코드 */      , ?    /* 개인/법인 구분 */      , ?    /* 조정변수1 */      , ?    /* 조정변수2 */      , ?    /* 조정변수3 */      , ?    /* 조정변수4 */      , ?    /* 조정변수5 */      , ?    /* 조정변수6 */      , ?    /* 생성일자 */      , ?    /* 거래일자 */      , ?     /* 비고 */      , ?    /* 룰상세 */      , ?    /* 룰로직 */      , ?   /* 변수명1 */      , ?   /* 변수명2 */      , ?   /* 변수명3 */      , ?   /* 변수명4 */      , ?   /* 변수명5 */      , ?   /* 변수명6 */      , ?     /* 순번 */      , ?    /* 조건명1 */      , ?    /* 조건명2 */      , ?    /* 조건명3 */      , ?    /* 조건명4 */      , ?    /* 조건명5 */      , ?    /* 조건명6 */      , ?   /* 상세구분 */      , ?    /* Proc Run SQL */      )
+### Cause: java.sql.SQLIntegrityConstraintViolationException: ORA-00001: 무결성 제약 조건(RBADBC.TMS_RULE_COND_PK)에 위배됩니다
+
+; SQL []; ORA-00001: 무결성 제약 조건(RBADBC.TMS_RULE_COND_PK)에 위배됩니다
+; nested exception is java.sql.SQLIntegrityConstraintViolationException: ORA-00001: 무결성 제약 조건(RBADBC.TMS_RULE_COND_PK)에 위배됩니다
+, request_uri=/rba/tms/ruleManage/updateRule.do}] as "application/json" using [org.springframework.http.converter.json.MappingJackson2HttpMessageConverter@7a470f74]
+▶  DEBUG 14:48:37.166 o.s.w.s.DispatcherServlet.processDispatchResult[1048] - Null ModelAndView returned to DispatcherServlet with name 'appServlet': assuming HandlerAdapter completed request handling
+[ POST /common/error/handleAnyJsonException.do ] Process Elapse Time : 0.1732835 Seconds
+▶  DEBUG 14:48:37.167 o.s.w.s.DispatcherServlet.processRequest[1000] - Successfully completed request
+▶  DEBUG 14:48:37.168 o.s.w.s.DispatcherServlet.processRequest[1000] - Successfully completed request

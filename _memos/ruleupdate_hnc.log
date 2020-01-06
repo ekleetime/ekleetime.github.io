@@ -1,0 +1,435 @@
+2020-01-06 14:16:50,161 DEBUG [org.springframework.web.servlet.DispatcherServlet] DispatcherServlet with name 'appServlet' processing POST request for [/str/str600/updateRule.do]
+2020-01-06 14:16:50,162 DEBUG [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping] Looking up handler method for path /str/str600/updateRule.do
+2020-01-06 14:16:50,162 DEBUG [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping] Returning handler method [public java.util.Map<java.lang.String, java.lang.Object> com.elonsoft.biz.str.str600.controller.STR600Controller.updateRule(javax.servlet.http.HttpServletRequest)]
+2020-01-06 14:16:50,167 DEBUG [log4jdbc.debug] driver name is Oracle JDBC driver
+2020-01-06 14:16:50,168  INFO [jdbc.sqlonly] SQL         :  /* STR600-mapper.updateRuleInfo */
+	   UPDATE RULE_INFO SET
+			  RUL_NM 		= '고객/01_고령자'						/* 룰명칭 */
+			, RUL_GB 		= 'R'							/* 룰속성 */
+			, RUL_GRD		= '2'					/* 룰등급 */
+			, RULGO			= NVL(NULL,'1')		/* 고객구분(0:공통,1:개인,2:법인) */
+			, GR_CD			= '01'						/* 대분류코드 */
+			, MD_CD			= '101'						/* 중분류코드 */
+
+			, RUL_DEF		= '3개월 이상 연체된 고객이 해당월에 현금 또는 가상계좌를 통해 1000만원 이상을 입금한 경우1'					/* 룰명세 */
+			, RUL_NOTE		= '장기간 연체 상환'					/* 룰추론기반 */
+			, RUL_REFER		= '장기간 연체 상환'					/* 룰참조사례 */
+			, RUL_STS		= '2'					/* 룰상태(1:대기,2:승인) RULE 사용여부 컬럼 1미사용 2 사용*/
+			, CHG_RSN		= NULL					/* 변경사유 */
+			, TY_CD			= NULL						/* 룰구분 */
+			, RUL_SQL		= NULL					/* 룰로직 */
+			, RUL_PREVIEW	= NULL				/* 룰로직2 */
+			, RULSUM		= ''						/* SUMMARY 기준 */
+			, RULCHU		= '01'						/* 추출주기(01:일,02:주,03:월,04:년) */
+			, RUL_SCR		= ''					/* 룰점수(메리츠 추가) */
+			, PREMISE_CRIME	= NULL				/* 전제범죄유형 */
+			, UPD_ID		= NULL						/* 최종수정ID */
+			, UPD_DT		= SYSDATE						/* 최종수정일자 */
+		WHERE RUL_CD = '101'
+2020-01-06 14:16:50,174  INFO [jdbc.sqlonly] SQL         :  /* STR600-mapper.mergeIntoRuleCond */
+		MERGE INTO RULE_COND TA
+		USING DUAL ON ( 	RUL_GRCD = 'rule'
+						AND RUL_CD   = '101'
+						AND RUL_GO   = '1'
+					  )
+		 WHEN MATCHED THEN
+	   UPDATE
+		  SET FACTOR1      = '79'				/* 조정변수1 */
+			  ,FACTOR2     = '1000'				/* 조정변수2 */
+			  ,FACTOR3     = ''				/* 조정변수3 */
+			  ,FACTOR4     = ''				/* 조정변수4 */
+			  ,FACTOR5     = ''				/* 조정변수5 */
+			  ,FACTOR6     = ''				/* 조정변수6 */
+			  ,FDATE       = NULL				/* 생성일자 */
+			  ,SDATE       = NULL				/* 거래일자 */
+			  ,ETC         = NULL					/* 비고 */
+			  ,RUL_STS     = '2'				/* 룰상세 */
+			  ,RUL_SQL     = NULL				/* 룰로직 */
+			  ,FACTOR1_NM  = '나이(만)'			/* 변수명1 */
+			  ,FACTOR2_NM  = '1주일_출금금액'			/* 변수명2 */
+			  ,FACTOR3_NM  = ''			/* 변수명3 */
+			  ,FACTOR4_NM  = ''			/* 변수명4 */
+			  ,FACTOR5_NM  = ''			/* 변수명5 */
+			  ,FACTOR6_NM  = ''			/* 변수명6 */
+			  ,SNO         = NULL					/* 순번 */
+			  ,FCON1       = '>='				/* 조건명1 */
+			  ,FCON2       = '>='				/* 조건명2 */
+			  ,FCON3       = ''				/* 조건명3 */
+			  ,FCON4       = ''				/* 조건명4 */
+			  ,FCON5       = ''				/* 조건명5 */
+			  ,FCON6       = ''				/* 조건명6 */
+			  ,DETAIL_GB   = NULL			/* 상세구분 */
+			  ,PROCSQL     = NULL				/* Proc Run SQL */
+	     WHEN NOT MATCHED THEN
+	   INSERT
+	   		  ( RUL_GRCD
+			  , RUL_CD
+			  , RUL_GO
+			  , FACTOR1
+			  , FACTOR2
+			  , FACTOR3
+			  , FACTOR4
+			  , FACTOR5
+			  , FACTOR6
+			  , FDATE
+			  , SDATE
+			  , ETC
+			  , RUL_STS
+			  , RUL_SQL
+			  , FACTOR1_NM
+			  , FACTOR2_NM
+			  , FACTOR3_NM
+			  , FACTOR4_NM
+			  , FACTOR5_NM
+			  , FACTOR6_NM
+			  , SNO
+			  , FCON1
+			  , FCON2
+			  , FCON3
+			  , FCON4
+			  , FCON5
+			  , FCON6
+			  , DETAIL_GB
+			  , PROCSQL
+			  )
+	   VALUES
+			  ( 'rule'					/* 분류코드 */
+			  , '101'				/* 룰코드 */
+			  , '1'				/* 개인/법인 구분 */
+			  , '79'				/* 조정변수1 */
+			  , '1000'				/* 조정변수2 */
+			  , ''				/* 조정변수3 */
+			  , ''				/* 조정변수4 */
+			  , ''				/* 조정변수5 */
+			  , ''				/* 조정변수6 */
+			  , NULL				/* 생성일자 */
+			  , NULL				/* 거래일자 */
+			  , NULL					/* 비고 */
+			  , '2'				/* 룰상세 */
+			  , NULL				/* 룰로직 */
+			  , '나이(만)'			/* 변수명1 */
+			  , '1주일_출금금액'			/* 변수명2 */
+			  , ''			/* 변수명3 */
+			  , ''			/* 변수명4 */
+			  , ''			/* 변수명5 */
+			  , ''			/* 변수명6 */
+			  , NULL					/* 순번 */
+			  , '>='				/* 조건명1 */
+			  , '>='				/* 조건명2 */
+			  , ''				/* 조건명3 */
+			  , ''				/* 조건명4 */
+			  , ''				/* 조건명5 */
+			  , ''				/* 조건명6 */
+			  , NULL			/* 상세구분 */
+			  , NULL				/* Proc Run SQL */
+			  )
+2020-01-06 14:16:50,183  INFO [jdbc.sqlonly] SQL         :  /* STR600-mapper.insertRuleCondHistory */
+		INSERT INTO RULE_COND_HISTORY
+		(
+			RUL_GRCD
+			,RUL_CD
+			,RUL_GO
+			,SNO
+			,FACTOR1
+			,FACTOR2
+			,FACTOR3
+			,FACTOR4
+			,FACTOR5
+			,FACTOR6
+			,FACTOR1_NM
+			,FACTOR2_NM
+			,FACTOR3_NM
+			,FACTOR4_NM
+			,FACTOR5_NM
+			,FACTOR6_NM
+			,FCON1
+			,FCON2
+			,FCON3
+			,FCON4
+			,FCON5
+			,FCON6
+			,U_ID
+			,FDATE
+			,SDATE
+			,USR_TYPE
+			,RUL_SQL
+		)
+		(
+			SELECT
+				   'rule'
+				   ,RUL_CD
+				   ,RUL_GO
+				   ,(SELECT NVL(MAX(SNO),0)+1
+				   		   FROM RULE_COND_HISTORY
+						  WHERE RUL_GRCD = 'rule'
+						    AND RUL_CD	= '101'
+						) AS SNO
+				   ,FACTOR1
+				   ,FACTOR2
+				   ,FACTOR3
+				   ,FACTOR4
+				   ,FACTOR5
+				   ,FACTOR6
+				   ,FACTOR1_NM
+				   ,FACTOR2_NM
+				   ,FACTOR3_NM
+				   ,FACTOR4_NM
+				   ,FACTOR5_NM
+				   ,FACTOR6_NM
+				   ,FCON1
+				   ,FCON2
+				   ,FCON3
+				   ,FCON4
+				   ,FCON5
+				   ,FCON6
+				   ,'admin0' AS U_ID
+				   ,'' AS FDATE
+				   ,'' AS SDATE
+				   ,'' AS USR_TYPE
+				   ,'' AS RUL_SQL
+			  FROM RULE_COND
+			 WHERE RUL_GRCD = 'rule'
+			   AND RUL_CD	= '101'
+			   AND RUL_GO	= '1'
+		)
+2020-01-06 14:16:50,192  INFO [jdbc.sqlonly] SQL         :  /* STR600-mapper.insertRuleHistory */
+			INSERT INTO RULE_HISTORY
+				(
+					SENO
+					,RUL_CD
+					,DT
+					,USR_NM
+					,RULE_DESC
+				)
+				VALUES
+				(
+					(SELECT NVL(MAX(SENO),0)+1 AS SENO
+					   FROM RULE_HISTORY
+					)
+					,'101'
+					,SYSDATE
+					,'관리자'
+					,'승인'
+				)
+2020-01-06 14:16:50,207 DEBUG [org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor] Written [{success=true, message=저장완료}] as "application/json;charset=UTF-8" using [org.springframework.http.converter.json.MappingJackson2HttpMessageConverter@59229945]
+2020-01-06 14:16:50,207 DEBUG [org.springframework.web.servlet.DispatcherServlet] Null ModelAndView returned to DispatcherServlet with name 'appServlet': assuming HandlerAdapter completed request handling
+2020-01-06 14:16:50,207 DEBUG [org.springframework.web.servlet.DispatcherServlet] Successfully completed request
+2020-01-06 14:17:29,584 DEBUG [org.springframework.web.servlet.DispatcherServlet] DispatcherServlet with name 'appServlet' processing POST request for [/str/str600/str600_L.do]
+2020-01-06 14:17:29,584 DEBUG [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping] Looking up handler method for path /str/str600/str600_L.do
+2020-01-06 14:17:29,584 DEBUG [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping] Returning handler method [public java.lang.String com.elonsoft.biz.str.str600.controller.STR600Controller.strRulePage()]
+2020-01-06 14:17:29,585 DEBUG [org.springframework.web.servlet.DispatcherServlet] Rendering view [org.springframework.web.servlet.view.JstlView: name '/str/str600/str600_L'; URL [/WEB-INF/views//str/str600/str600_L.jsp]] in DispatcherServlet with name 'appServlet'
+2020-01-06 14:17:29,585 DEBUG [org.springframework.web.servlet.view.JstlView] Forwarding to resource [/WEB-INF/views//str/str600/str600_L.jsp] in InternalResourceView '/str/str600/str600_L'
+2020-01-06 14:17:29,589 DEBUG [org.springframework.web.servlet.DispatcherServlet] Successfully completed request
+2020-01-06 14:17:29,996 DEBUG [org.springframework.web.servlet.DispatcherServlet] DispatcherServlet with name 'appServlet' processing POST request for [/mng/common/selectCmMnAthrBtn.do]
+2020-01-06 14:17:29,996 DEBUG [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping] Looking up handler method for path /mng/common/selectCmMnAthrBtn.do
+2020-01-06 14:17:30,000 DEBUG [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping] Returning handler method [public java.util.Map<java.lang.String, java.lang.Object> com.elonsoft.biz.common.controller.CommonController.selectCmMnAthrBtn(javax.servlet.http.HttpServletRequest)]
+2020-01-06 14:17:30,000 DEBUG [org.springframework.web.servlet.DispatcherServlet] DispatcherServlet with name 'appServlet' processing POST request for [/str/str600/str600SearchList.do]
+2020-01-06 14:17:30,000 DEBUG [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping] Looking up handler method for path /str/str600/str600SearchList.do
+2020-01-06 14:17:30,000 DEBUG [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping] Returning handler method [public java.util.Map<java.lang.String, java.lang.Object> com.elonsoft.biz.str.str600.controller.STR600Controller.str600SearchList(javax.servlet.http.HttpServletRequest)]
+2020-01-06 14:17:30,004 DEBUG [log4jdbc.debug] driver name is Oracle JDBC driver
+2020-01-06 14:17:30,004 DEBUG [log4jdbc.debug] driver name is Oracle JDBC driver
+2020-01-06 14:17:30,004  INFO [jdbc.sqlonly] SQL         :  /* Common-mapper.selectCmMnAthrBtn */
+			SELECT A.MENU_CATE
+				   ,A.MENU_ID
+				   ,B.OBJ_ID
+			  FROM CM_MENU A INNER JOIN CM_MNATHR B
+									 ON A.MENU_CATE = B.MENU_CATE
+									AND A.MENU_ID = B.MENU_ID
+									AND B.ATHR_CD = '9999'
+			 WHERE A.USE_YN = 'Y'
+			   AND A.PAGE_URL = '/str/str600/str600_L.do'
+2020-01-06 14:17:30,004  INFO [jdbc.sqlonly] SQL         :  /* STR600-mapper.selectRuleInfoList */
+		 SELECT A.RUL_CD ,
+		  A.RULGO AS RUL_GO ,
+		  B.GR_CD ,
+		  B.GR_NM ,
+		  B.MD_CD ,
+		  B.MD_NM
+		FROM RULE_INFO A INNER JOIN CM_CODEMD B ON A.GR_CD = B.GR_CD
+		  AND A.MD_CD = B.MD_CD
+		WHERE A.RUL_GB = 'R'
+		  AND A.RUL_STS = '2'
+		ORDER BY B.GR_CD, B.MD_CD, TO_NUMBER(A.RUL_CD)
+2020-01-06 14:17:30,009  INFO [jdbc.resultsettable] |----------|--------|----------------------------------------------------|
+2020-01-06 14:17:30,009  INFO [jdbc.resultsettable] |MENU_CATE |MENU_ID |OBJ_ID                                              |
+2020-01-06 14:17:30,009  INFO [jdbc.resultsettable] |----------|--------|----------------------------------------------------|
+2020-01-06 14:17:30,009  INFO [jdbc.resultsettable] |STR       |STR600  |btn_search,btn_save,btn_excel,btn_delete,btn_create |
+2020-01-06 14:17:30,009  INFO [jdbc.resultsettable] |----------|--------|----------------------------------------------------|
+2020-01-06 14:17:30,015  INFO [jdbc.resultsettable] |-------|-------|------|------|------|---------------|
+2020-01-06 14:17:30,015  INFO [jdbc.resultsettable] |RUL_CD |RUL_GO |GR_CD |GR_NM |MD_CD |MD_NM          |
+2020-01-06 14:17:30,016  INFO [jdbc.resultsettable] |-------|-------|------|------|------|---------------|
+2020-01-06 14:17:30,016  INFO [jdbc.resultsettable] |101    |1      |01    |고객    |101   |01_고령자         |
+2020-01-06 14:17:30,016  INFO [jdbc.resultsettable] |102    |2      |01    |고객    |102   |02_비영리법인(단체)   |
+2020-01-06 14:17:30,016  INFO [jdbc.resultsettable] |103    |1      |01    |고객    |103   |03_법인/대표자간의 거래 |
+2020-01-06 14:17:30,016  INFO [jdbc.resultsettable] |104    |1      |01    |고객    |104   |04_종합자산관리 대상자  |
+2020-01-06 14:17:30,016  INFO [jdbc.resultsettable] |105    |1      |01    |고객    |105   |05_종합자산관리 대상자  |
+2020-01-06 14:17:30,016  INFO [jdbc.resultsettable] |106    |0      |01    |고객    |106   |06_고위험군 거래     |
+2020-01-06 14:17:30,016  INFO [jdbc.resultsettable] |107    |1      |01    |고객    |107   |07_자금력의심자      |
+2020-01-06 14:17:30,016  INFO [jdbc.resultsettable] |108    |1      |01    |고객    |108   |08_외국인 거래      |
+2020-01-06 14:17:30,016  INFO [jdbc.resultsettable] |109    |0      |01    |고객    |109   |09_고위험군 거래     |
+2020-01-06 14:17:30,016  INFO [jdbc.resultsettable] |110    |0      |01    |고객    |110   |10_가상통화취급업소    |
+2020-01-06 14:17:30,016  INFO [jdbc.resultsettable] |111    |0      |01    |고객    |111   |11_가상통화취급업소    |
+2020-01-06 14:17:30,016  INFO [jdbc.resultsettable] |112    |1      |01    |고객    |112   |12_개인/법인간의 거래  |
+2020-01-06 14:17:30,016  INFO [jdbc.resultsettable] |113    |0      |01    |고객    |113   |13_STR보고자      |
+2020-01-06 14:17:30,016  INFO [jdbc.resultsettable] |114    |2      |01    |고객    |114   |14_요주의 계좌      |
+2020-01-06 14:17:30,016  INFO [jdbc.resultsettable] |201    |0      |02    |계좌    |201   |01_폐쇄계좌        |
+2020-01-06 14:17:30,016  INFO [jdbc.resultsettable] |202    |0      |02    |계좌    |202   |02_통합해지(휴면계좌)  |
+2020-01-06 14:17:30,016  INFO [jdbc.resultsettable] |203    |0      |02    |계좌    |203   |03_개좌 개설/해지 거래 |
+2020-01-06 14:17:30,016  INFO [jdbc.resultsettable] |301    |0      |03    |거래    |301   |01_분할입금        |
+2020-01-06 14:17:30,016  INFO [jdbc.resultsettable] |302    |0      |03    |거래    |302   |02_분할입금        |
+2020-01-06 14:17:30,016  INFO [jdbc.resultsettable] |401    |0      |04    |채널    |401   |01_비대면거래       |
+2020-01-06 14:17:30,016  INFO [jdbc.resultsettable] |501    |0      |05    |KYE   |501   |01_관리자         |
+2020-01-06 14:17:30,016  INFO [jdbc.resultsettable] |502    |0      |05    |KYE   |502   |02_관리자         |
+2020-01-06 14:17:30,016  INFO [jdbc.resultsettable] |901    |0      |09    |임의보고  |901   |01_임의보고        |
+2020-01-06 14:17:30,016  INFO [jdbc.resultsettable] |-------|-------|------|------|------|---------------|
+2020-01-06 14:17:30,016 DEBUG [org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor] Written [{LIST=[{OBJ_ID=btn_search,btn_save,btn_excel,btn_delete,btn_create, MENU_ID=STR600, MENU_CATE=STR}]}] as "application/json;charset=UTF-8" using [org.springframework.http.converter.json.MappingJackson2HttpMessageConverter@59229945]
+2020-01-06 14:17:30,016 DEBUG [org.springframework.web.servlet.DispatcherServlet] Null ModelAndView returned to DispatcherServlet with name 'appServlet': assuming HandlerAdapter completed request handling
+2020-01-06 14:17:30,016 DEBUG [org.springframework.web.servlet.DispatcherServlet] Successfully completed request
+2020-01-06 14:17:30,024 DEBUG [org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor] Written [{LIST=[{RUL_GO=1, MD_CD=101, RUL_CD=101, GR_CD=01, MD_NM=01_고령자, GR_NM=고객}, {RUL_GO=2, MD_CD=102, RUL_CD=102, GR_CD=01, MD_NM=02_비영리법인(단체), GR_NM=고객}, {RUL_GO=1, MD_CD=103, RUL_CD=103, GR_CD=01, MD_NM=03_법인/대표자간의 거래, GR_NM=고객}, {RUL_GO=1, MD_CD=104, RUL_CD=104, GR_CD=01, MD_NM=04_종합자산관리 대상자, GR_NM=고객}, {RUL_GO=1, MD_CD=105, RUL_CD=105, GR_CD=01, MD_NM=05_종합자산관리 대상자, GR_NM=고객}, {RUL_GO=0, MD_CD=106, RUL_CD=106, GR_CD=01, MD_NM=06_고위험군 거래, GR_NM=고객}, {RUL_GO=1, MD_CD=107, RUL_CD=107, GR_CD=01, MD_NM=07_자금력의심자, GR_NM=고객}, {RUL_GO=1, MD_CD=108, RUL_CD=108, GR_CD=01, MD_NM=08_외국인 거래, GR_NM=고객}, {RUL_GO=0, MD_CD=109, RUL_CD=109, GR_CD=01, MD_NM=09_고위험군 거래, GR_NM=고객}, {RUL_GO=0, MD_CD=110, RUL_CD=110, GR_CD=01, MD_NM=10_가상통화취급업소, GR_NM=고객}, {RUL_GO=0, MD_CD=111, RUL_CD=111, GR_CD=01, MD_NM=11_가상통화취급업소, GR_NM=고객}, {RUL_GO=1, MD_CD=112, RUL_CD=112, GR_CD=01, MD_NM=12_개인/법인간의 거래, GR_NM=고객}, {RUL_GO=0, MD_CD=113, RUL_CD=113, GR_CD=01, MD_NM=13_STR보고자, GR_NM=고객}, {RUL_GO=2, MD_CD=114, RUL_CD=114, GR_CD=01, MD_NM=14_요주의 계좌, GR_NM=고객}, {RUL_GO=0, MD_CD=201, RUL_CD=201, GR_CD=02, MD_NM=01_폐쇄계좌, GR_NM=계좌}, {RUL_GO=0, MD_CD=202, RUL_CD=202, GR_CD=02, MD_NM=02_통합해지(휴면계좌), GR_NM=계좌}, {RUL_GO=0, MD_CD=203, RUL_CD=203, GR_CD=02, MD_NM=03_개좌 개설/해지 거래, GR_NM=계좌}, {RUL_GO=0, MD_CD=301, RUL_CD=301, GR_CD=03, MD_NM=01_분할입금, GR_NM=거래}, {RUL_GO=0, MD_CD=302, RUL_CD=302, GR_CD=03, MD_NM=02_분할입금, GR_NM=거래}, {RUL_GO=0, MD_CD=401, RUL_CD=401, GR_CD=04, MD_NM=01_비대면거래, GR_NM=채널}, {RUL_GO=0, MD_CD=501, RUL_CD=501, GR_CD=05, MD_NM=01_관리자, GR_NM=KYE}, {RUL_GO=0, MD_CD=502, RUL_CD=502, GR_CD=05, MD_NM=02_관리자, GR_NM=KYE}, {RUL_GO=0, MD_CD=901, RUL_CD=901, GR_CD=09, MD_NM=01_임의보고, GR_NM=임의보고}]}] as "application/json;charset=UTF-8" using [org.springframework.http.converter.json.MappingJackson2HttpMessageConverter@59229945]
+2020-01-06 14:17:30,024 DEBUG [org.springframework.web.servlet.DispatcherServlet] Null ModelAndView returned to DispatcherServlet with name 'appServlet': assuming HandlerAdapter completed request handling
+2020-01-06 14:17:30,024 DEBUG [org.springframework.web.servlet.DispatcherServlet] Successfully completed request
+2020-01-06 14:17:30,196 DEBUG [org.springframework.web.servlet.DispatcherServlet] DispatcherServlet with name 'appServlet' processing POST request for [/str/str600/selectCmCodegrList.do]
+2020-01-06 14:17:30,196 DEBUG [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping] Looking up handler method for path /str/str600/selectCmCodegrList.do
+2020-01-06 14:17:30,197 DEBUG [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping] Returning handler method [public java.util.Map<java.lang.String, java.lang.Object> com.elonsoft.biz.str.str600.controller.STR600Controller.selectCmCodegrList(javax.servlet.http.HttpServletRequest)]
+2020-01-06 14:17:30,201 DEBUG [log4jdbc.debug] driver name is Oracle JDBC driver
+2020-01-06 14:17:30,202  INFO [jdbc.sqlonly] SQL         :  /* STR600-mapper.selectCmCodegrList */
+		SELECT GR_CD
+			   ,GR_NM
+		  FROM CM_CODEGR
+		 WHERE ISUSE = 'Y'
+2020-01-06 14:17:30,205  INFO [jdbc.resultsettable] |------|------|
+2020-01-06 14:17:30,205  INFO [jdbc.resultsettable] |GR_CD |GR_NM |
+2020-01-06 14:17:30,205  INFO [jdbc.resultsettable] |------|------|
+2020-01-06 14:17:30,205  INFO [jdbc.resultsettable] |01    |고객    |
+2020-01-06 14:17:30,205  INFO [jdbc.resultsettable] |02    |계좌    |
+2020-01-06 14:17:30,205  INFO [jdbc.resultsettable] |03    |거래    |
+2020-01-06 14:17:30,205  INFO [jdbc.resultsettable] |04    |채널    |
+2020-01-06 14:17:30,205  INFO [jdbc.resultsettable] |05    |KYE   |
+2020-01-06 14:17:30,205  INFO [jdbc.resultsettable] |09    |임의보고  |
+2020-01-06 14:17:30,205  INFO [jdbc.resultsettable] |------|------|
+2020-01-06 14:17:30,214 DEBUG [org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor] Written [{LIST=[{GR_CD=01, GR_NM=고객}, {GR_CD=02, GR_NM=계좌}, {GR_CD=03, GR_NM=거래}, {GR_CD=04, GR_NM=채널}, {GR_CD=05, GR_NM=KYE}, {GR_CD=09, GR_NM=임의보고}]}] as "application/json;charset=UTF-8" using [org.springframework.http.converter.json.MappingJackson2HttpMessageConverter@59229945]
+2020-01-06 14:17:30,214 DEBUG [org.springframework.web.servlet.DispatcherServlet] Null ModelAndView returned to DispatcherServlet with name 'appServlet': assuming HandlerAdapter completed request handling
+2020-01-06 14:17:30,214 DEBUG [org.springframework.web.servlet.DispatcherServlet] Successfully completed request
+2020-01-06 14:17:32,859 DEBUG [org.springframework.web.servlet.DispatcherServlet] DispatcherServlet with name 'appServlet' processing POST request for [/str/str600/str600_detail_data.do]
+2020-01-06 14:17:32,859 DEBUG [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping] Looking up handler method for path /str/str600/str600_detail_data.do
+2020-01-06 14:17:32,859 DEBUG [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping] Returning handler method [public java.util.Map<java.lang.String, java.lang.Object> com.elonsoft.biz.str.str600.controller.STR600Controller.str600Detail(javax.servlet.http.HttpServletRequest)]
+2020-01-06 14:17:32,862 DEBUG [log4jdbc.debug] driver name is Oracle JDBC driver
+2020-01-06 14:17:32,863  INFO [jdbc.sqlonly] SQL         :  /* STR600-mapper.selectRuleDetail */
+		SELECT A.RUL_CD
+			   ,B.MD_NM
+			   ,C.GR_CD
+			   ,C.GR_NM
+			   ,A.RULGO AS RUL_GO
+			   ,A.RUL_GRD
+
+			   ,A.RUL_DEF
+			   ,A.RUL_NOTE
+			   ,A.RUL_REFER
+			   ,A.RULCHU
+
+			   ,A.RULSUM
+			   ,A.TY_CD
+			   ,A.RUL_GB
+			   ,A.MD_CD
+
+			   ,A.RUL_STS
+			   ,A.CHG_RSN
+			   ,A.RUL_SQL
+			   ,A.RUL_PREVIEW
+			   ,A.RUL_SCR
+			   ,A.PREMISE_CRIME
+			   ,B.GR_NM || '/' || B.MD_NM AS RUL_NM
+		  FROM RULE_INFO A INNER JOIN CM_CODEMD B
+		  						   ON A.GR_CD = B.GR_CD
+		  						  AND A.MD_CD = B.MD_CD
+			   			   INNER JOIN CM_CODEGR C
+			   			   		   ON A.GR_CD = C.GR_CD
+
+
+		 WHERE A.RUL_CD = '101'
+2020-01-06 14:17:32,868  INFO [jdbc.resultsettable] |-------|-------|------|------|-------|--------|------------------------------------------------------|----------|----------|-------|-------|-------|-------|------|--------|--------|--------|------------|--------|--------------|----------|
+2020-01-06 14:17:32,868  INFO [jdbc.resultsettable] |RUL_CD |MD_NM  |GR_CD |GR_NM |RUL_GO |RUL_GRD |RUL_DEF                                               |RUL_NOTE  |RUL_REFER |RULCHU |RULSUM |TY_CD  |RUL_GB |MD_CD |RUL_STS |CHG_RSN |RUL_SQL |RUL_PREVIEW |RUL_SCR |PREMISE_CRIME |RUL_NM    |
+2020-01-06 14:17:32,868  INFO [jdbc.resultsettable] |-------|-------|------|------|-------|--------|------------------------------------------------------|----------|----------|-------|-------|-------|-------|------|--------|--------|--------|------------|--------|--------------|----------|
+2020-01-06 14:17:32,868  INFO [jdbc.resultsettable] |101    |01_고령자 |01    |고객    |1      |2       |3개월 이상 연체된 고객이 해당월에 현금 또는 가상계좌를 통해 1000만원 이상을 입금한 경우1 |장기간 연체 상환 |장기간 연체 상환 |01     |[null] |[null] |R      |101   |2       |[null]  |[null]  |[null]      |[null]  |[null]        |고객/01_고령자 |
+2020-01-06 14:17:32,868  INFO [jdbc.resultsettable] |-------|-------|------|------|-------|--------|------------------------------------------------------|----------|----------|-------|-------|-------|-------|------|--------|--------|--------|------------|--------|--------------|----------|
+2020-01-06 14:17:32,875 DEBUG [org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor] Written [{DATA={RUL_GO=1, RUL_REFER=장기간 연체 상환, CHG_RSN=null, RUL_GRD=2, RUL_CD=101, RUL_DEF=3개월 이상 연체된 고객이 해당월에 현금 또는 가상계좌를 통해 1000만원 이상을 입금한 경우1, RUL_NOTE=장기간 연체 상환, RUL_PREVIEW=null, RUL_SCR=null, RUL_NM=고객/01_고령자, RUL_GB=R, TY_CD=null, MD_CD=101, RULCHU=01, MD_NM=01_고령자, GR_CD=01, RUL_STS=2, GR_NM=고객, RULSUM=null, RUL_SQL=null, PREMISE_CRIME=null}}] as "application/json;charset=UTF-8" using [org.springframework.http.converter.json.MappingJackson2HttpMessageConverter@59229945]
+2020-01-06 14:17:32,876 DEBUG [org.springframework.web.servlet.DispatcherServlet] Null ModelAndView returned to DispatcherServlet with name 'appServlet': assuming HandlerAdapter completed request handling
+2020-01-06 14:17:32,876 DEBUG [org.springframework.web.servlet.DispatcherServlet] Successfully completed request
+2020-01-06 14:17:32,883 DEBUG [org.springframework.web.servlet.DispatcherServlet] DispatcherServlet with name 'appServlet' processing POST request for [/str/str600/selectCmCodemdList.do]
+2020-01-06 14:17:32,883 DEBUG [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping] Looking up handler method for path /str/str600/selectCmCodemdList.do
+2020-01-06 14:17:32,883 DEBUG [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping] Returning handler method [public java.util.Map<java.lang.String, java.lang.Object> com.elonsoft.biz.str.str600.controller.STR600Controller.selectCmCodemdList(javax.servlet.http.HttpServletRequest)]
+2020-01-06 14:17:32,883 DEBUG [org.springframework.web.servlet.DispatcherServlet] DispatcherServlet with name 'appServlet' processing POST request for [/str/str600/str600_factor_data.do]
+2020-01-06 14:17:32,883 DEBUG [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping] Looking up handler method for path /str/str600/str600_factor_data.do
+2020-01-06 14:17:32,883 DEBUG [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping] Returning handler method [public java.util.Map<java.lang.String, java.lang.Object> com.elonsoft.biz.str.str600.controller.STR600Controller.str600Factor(javax.servlet.http.HttpServletRequest)]
+2020-01-06 14:17:32,887 DEBUG [log4jdbc.debug] driver name is Oracle JDBC driver
+2020-01-06 14:17:32,887 DEBUG [log4jdbc.debug] driver name is Oracle JDBC driver
+2020-01-06 14:17:32,887  INFO [jdbc.sqlonly] SQL         :  /* STR600-mapper.selectCmCodemdList */
+		SELECT MD_CD
+		     , MD_NM
+		  FROM CM_CODEMD
+		 WHERE ISUSE = 'Y'
+		   AND GR_CD = '01'
+2020-01-06 14:17:32,887  INFO [jdbc.sqlonly] SQL         :  /* STR600-mapper.selectFactorDetail */
+		SELECT  TA.RUL_GRCD
+			   ,TA.RUL_CD
+			   ,TA.RUL_GO
+			   ,TA.FACTOR1
+			   ,TA.FACTOR2
+			   ,TA.FACTOR3
+			   ,TA.FACTOR4
+			   ,TA.FACTOR5
+			   ,TA.FACTOR6
+			   ,TA.FDATE
+			   ,TA.SDATE
+			   ,TA.ETC
+			   ,TA.RUL_SQL
+			   ,TA.FACTOR1_NM
+			   ,TA.FACTOR2_NM
+			   ,TA.FACTOR3_NM
+			   ,TA.FACTOR4_NM
+			   ,TA.FACTOR5_NM
+			   ,TA.FACTOR6_NM
+			   ,TA.SNO
+			   ,TA.FCON1
+			   ,TA.FCON2
+			   ,TA.FCON3
+			   ,TA.FCON4
+			   ,TA.FCON5
+			   ,TA.FCON6
+			   ,TA.DETAIL_GB
+			   ,TA.PROCSQL
+  		  FROM RULE_COND TA
+  		 WHERE TA.RUL_GRCD = 'rule'
+		   AND TA.RUL_CD = '101'
+		   AND TA.RUL_GO = '1'
+2020-01-06 14:17:32,891  INFO [jdbc.resultsettable] |---------|-------|-------|--------|--------|--------|--------|--------|--------|-------|-------|-------|--------|-----------|-----------|-----------|-----------|-----------|-----------|-------|------|------|-------|-------|-------|-------|----------|--------|
+2020-01-06 14:17:32,891  INFO [jdbc.resultsettable] |RUL_GRCD |RUL_CD |RUL_GO |FACTOR1 |FACTOR2 |FACTOR3 |FACTOR4 |FACTOR5 |FACTOR6 |FDATE  |SDATE  |ETC    |RUL_SQL |FACTOR1_NM |FACTOR2_NM |FACTOR3_NM |FACTOR4_NM |FACTOR5_NM |FACTOR6_NM |SNO    |FCON1 |FCON2 |FCON3  |FCON4  |FCON5  |FCON6  |DETAIL_GB |PROCSQL |
+2020-01-06 14:17:32,891  INFO [jdbc.resultsettable] |---------|-------|-------|--------|--------|--------|--------|--------|--------|-------|-------|-------|--------|-----------|-----------|-----------|-----------|-----------|-----------|-------|------|------|-------|-------|-------|-------|----------|--------|
+2020-01-06 14:17:32,891  INFO [jdbc.resultsettable] |rule     |101    |1      |79      |1000    |[null]  |[null]  |[null]  |[null]  |[null] |[null] |[null] |[null]  |나이(만)      |1주일_출금금액   |[null]     |[null]     |[null]     |[null]     |[null] |>=    |>=    |[null] |[null] |[null] |[null] |[null]    |[null]  |
+2020-01-06 14:17:32,891  INFO [jdbc.resultsettable] |---------|-------|-------|--------|--------|--------|--------|--------|--------|-------|-------|-------|--------|-----------|-----------|-----------|-----------|-----------|-----------|-------|------|------|-------|-------|-------|-------|----------|--------|
+2020-01-06 14:17:32,893  INFO [jdbc.resultsettable] |------|----------------|
+2020-01-06 14:17:32,894  INFO [jdbc.resultsettable] |MD_CD |MD_NM           |
+2020-01-06 14:17:32,894  INFO [jdbc.resultsettable] |------|----------------|
+2020-01-06 14:17:32,894  INFO [jdbc.resultsettable] |101   |01_고령자          |
+2020-01-06 14:17:32,894  INFO [jdbc.resultsettable] |102   |02_비영리법인(단체)    |
+2020-01-06 14:17:32,894  INFO [jdbc.resultsettable] |103   |03_법인/대표자간의 거래  |
+2020-01-06 14:17:32,894  INFO [jdbc.resultsettable] |104   |04_종합자산관리 대상자   |
+2020-01-06 14:17:32,894  INFO [jdbc.resultsettable] |105   |05_종합자산관리 대상자   |
+2020-01-06 14:17:32,894  INFO [jdbc.resultsettable] |106   |06_고위험군 거래      |
+2020-01-06 14:17:32,894  INFO [jdbc.resultsettable] |107   |07_자금력의심자       |
+2020-01-06 14:17:32,894  INFO [jdbc.resultsettable] |108   |08_외국인 거래       |
+2020-01-06 14:17:32,894  INFO [jdbc.resultsettable] |109   |09_고위험군 거래      |
+2020-01-06 14:17:32,894  INFO [jdbc.resultsettable] |110   |10_가상통화취급업소     |
+2020-01-06 14:17:32,894  INFO [jdbc.resultsettable] |111   |11_가상통화취급업소     |
+2020-01-06 14:17:32,894  INFO [jdbc.resultsettable] |112   |12_개인/법인간의 거래   |
+2020-01-06 14:17:32,894  INFO [jdbc.resultsettable] |113   |13_STR보고자       |
+2020-01-06 14:17:32,894  INFO [jdbc.resultsettable] |114   |14_요주의 계좌       |
+2020-01-06 14:17:32,894  INFO [jdbc.resultsettable] |115   |15_고위험대상(과)의 거래 |
+2020-01-06 14:17:32,894  INFO [jdbc.resultsettable] |116   |16_test         |
+2020-01-06 14:17:32,894  INFO [jdbc.resultsettable] |------|----------------|
+2020-01-06 14:17:32,899 DEBUG [org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor] Written [{DATA={FACTOR3_NM=null, PROCSQL=null, RUL_GO=1, FACTOR5_NM=null, FACTOR1_NM=나이(만), RUL_CD=101, FDATE=null, SNO=null, FCON6=null, FACTOR2_NM=1주일_출금금액, FCON4=null, FACTOR4_NM=null, FCON5=null, FACTOR6_NM=null, FCON2=>=, FCON3=null, FCON1=>=, FACTOR5=null, SDATE=null, FACTOR6=null, FACTOR3=null, FACTOR4=null, FACTOR1=79, DETAIL_GB=null, FACTOR2=1000, ETC=null, RUL_GRCD=rule, RUL_SQL=null}}] as "application/json;charset=UTF-8" using [org.springframework.http.converter.json.MappingJackson2HttpMessageConverter@59229945]
+2020-01-06 14:17:32,899 DEBUG [org.springframework.web.servlet.DispatcherServlet] Null ModelAndView returned to DispatcherServlet with name 'appServlet': assuming HandlerAdapter completed request handling
+2020-01-06 14:17:32,899 DEBUG [org.springframework.web.servlet.DispatcherServlet] Successfully completed request
+2020-01-06 14:17:32,901 DEBUG [org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor] Written [{LIST=[{MD_CD=101, MD_NM=01_고령자}, {MD_CD=102, MD_NM=02_비영리법인(단체)}, {MD_CD=103, MD_NM=03_법인/대표자간의 거래}, {MD_CD=104, MD_NM=04_종합자산관리 대상자}, {MD_CD=105, MD_NM=05_종합자산관리 대상자}, {MD_CD=106, MD_NM=06_고위험군 거래}, {MD_CD=107, MD_NM=07_자금력의심자}, {MD_CD=108, MD_NM=08_외국인 거래}, {MD_CD=109, MD_NM=09_고위험군 거래}, {MD_CD=110, MD_NM=10_가상통화취급업소}, {MD_CD=111, MD_NM=11_가상통화취급업소}, {MD_CD=112, MD_NM=12_개인/법인간의 거래}, {MD_CD=113, MD_NM=13_STR보고자}, {MD_CD=114, MD_NM=14_요주의 계좌}, {MD_CD=115, MD_NM=15_고위험대상(과)의 거래}, {MD_CD=116, MD_NM=16_test}]}] as "application/json;charset=UTF-8" using [org.springframework.http.converter.json.MappingJackson2HttpMessageConverter@59229945]
+2020-01-06 14:17:32,902 DEBUG [org.springframework.web.servlet.DispatcherServlet] Null ModelAndView returned to DispatcherServlet with name 'appServlet': assuming HandlerAdapter completed request handling
+2020-01-06 14:17:32,902 DEBUG [org.springframework.web.servlet.DispatcherServlet] Successfully completed request
