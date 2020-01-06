@@ -1,0 +1,14 @@
+/kyc/codeManage/codeManageView.do
+/tms/ruleManage/ruleManageView.do
+/tms/noTransList/noTransListView.do
+/kyc/resultManage/resultManageView.do
+/kyc/CDDResultManage/CDDResultManageView.do
+/kyc/EDDResultManage/EDDResultManageView.do
+/kyc/RAResultManage/RAResultManageView.do
+/kyc/WLResultManage/WLResultManageView.do
+/kyc/WLConfirmManage/WLConfirmManageView.do
+/kyc/3PConfirmManage/3PConfirmManageView.do
+/tms/transDivManage/transDivManageView.do
+/tms/transManage/transManageView.do
+/tms/transOptManage/transOptManageView.do
+/tms/STRRportManage/STRRportManageView.do

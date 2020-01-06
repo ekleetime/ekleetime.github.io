@@ -1,0 +1,1 @@
+JavaScript Debugger Console: Web Console disabled, please install JavaFX or use bundled JRE. To enable Web Console, switch the flag "js.debugger.webconsole" in Registry.

@@ -1,0 +1,44 @@
+# For a quick start check out our HTTP Requests collection (Tools|HTTP Client|Open HTTP Requests Collection).
+#
+# Following HTTP Request Live Templates are available:
+# * 'gtrp' and 'gtr' create a GET request with or without query parameters;
+# * 'ptr' and 'ptrp' create a POST request with a simple or parameter-like body;
+# * 'mptr' and 'fptr' create a POST request to submit a form with a text or file field (multipart/form-data);
+
+### 기본사용
+GET http://localhost:8280/rba/rba/cri/ctldCaseManage/retrieveCtldCaseManageCommCode.do
+
+
+### POST
+POST http://localhost:8280/rba/str/str100/str100SelectList
+Content-Type: application/json;charset=UTF-8
+{
+  "PAGE_URL": "/str/str100/str100_L.do",
+  "STATE:": "",
+  "SEARCH_FROMDT": "1900-09-13",
+  "SEARCH_TODT": "2019-12-20",
+  "SEARCH_RUL_CD:": "",
+  "SEARCH_BRCHCD:": "",
+  "COM_ATHR_CD:A1000": "",
+  "DEPT_SEARCH:N": "",
+  "REPORT_DIV:": "",
+  "take:15": "",
+  "skip:0": "",
+  "page:1": "",
+  "pageSize:15": ""
+}
+
+###룰관리
+POST http://localhost:8180/str/str600/selectCmCodegrList.do
+Content-Type: application/json;charset=UTF-8
+{
+}
+
+###http://localhost:8280/rba/aml/tms/tmsRuleManage/retrieveRuleInfo.do?_=1577688549341
+GET http://localhost:8280/rba/aml/tms/tmsRuleManage/retrieveRuleInfo.do
+
+
+###
+GET http://localhost:8280/rba/system/menu/retrieveMenu.do
+
+###

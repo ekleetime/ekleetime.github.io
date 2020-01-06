@@ -1,0 +1,29 @@
+# For a quick start check out our HTTP Requests collection (Tools|HTTP Client|Open HTTP Requests Collection).
+#
+# Following HTTP Request Live Templates are available:
+# * 'gtrp' and 'gtr' create a GET request with or without query parameters;
+# * 'ptr' and 'ptrp' create a POST request with a simple or parameter-like body;
+# * 'mptr' and 'fptr' create a POST request to submit a form with a text or file field (multipart/form-data);
+
+### 목표 : /rba/aml/tms/tmsRuleManage/tmsRuleManageView.do
+#/aml/tms/tmsRuleManage/tmsRuleManageView.do
+#/aml/tms/tmsNoTransList/tmsNoTransListView.do
+#/aml/tms/tmsTransDivManage/tmsTransDivManageView.do
+#/aml/tms/tmsTransManage/tmsTransManageView.do
+#/aml/tms/tmsTransOptManage/tmsTransOptManageView.do
+#/aml/tms/tmsSTRRportManage/tmsSTRRportManageView.do
+#http://localhost:8280/rba/system/menu/menuView.do?_=157
+###룰관리
+POST http://localhost:8180/str/str600/selectCmCodegrList.do
+Content-Type: application/json;charset=UTF-8
+{
+}
+
+###룰관리
+
+POST http://localhost:8280/rba/str/str600/selectCmCodegrList.do
+Content-Type: application/json;charset=UTF-8
+{
+}
+
+###

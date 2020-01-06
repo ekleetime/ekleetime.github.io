@@ -1,0 +1,39 @@
+https://www.sunkyolab.com:8185/svn/aml_dbc_src/RBAMRCAP
+Format:
+1.8
+svnadmin create newrepo
+svnadmin dump -r 0:20 https://www.sunkyolab.com:8185/svn/aml_dbc_src/RBAMRCAP | svnadmin load newrepo
+sv
+svnadmin info https://www.sunkyolab.com:8185/svn/aml_dbc_src/RBAMRCAP
+
+73
+
+This worked for me. Given that you have revision 1234 as the HEAD and you want to revert last three commits:
+
+svnadmin create newrepo
+svnadmin dump -r 0:1231 repo | svnadmin load newrepo
+mv repo oldrepo
+mv newrepo repo
+
+d
+
+svn merge --dry-run -r 24:20 https://www.sunkyolab.com:8185/svn/aml_dbc_src/RBAMRCAP
+svn merge -r 24:20 https://www.sunkyolab.com:8185/svn/aml_dbc_src/RBAMRCAP
+svn commit -m 'Reverted to revision 20' .
+
+
+[svn] 잘못 커밋된 리비젼 되돌리기
+http://tangos.egloos.com/10878387
+
+시나리오
+잘못 커밋해서 커밋한 버젼을 되돌리고 싶다.
+100 리비젼을 99로 되돌리고 싶다.
+
+
+1. svn merge --dry-run -r 100:99 svn://my.svn.com/project/trunk
+
+ 리스트를 보고 머지될 파일들이 맞는지 확인한다.
+
+2. svn merge -r 100:99 svn://my.svn.com/project/trunk
+
+3. svn commit -m 'Reverted to revision 99' .
