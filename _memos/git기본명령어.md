@@ -78,8 +78,7 @@ git commit
 git commit -m "커밋 메시지"
  
 // Staging Area에 들어간 파일에 대해서만 (워킹 디렉터리는 적용 X)
-git commit -a -m "커밋 메시지"
- 
+git commit -a -m "커밋 메시
 git log
 로컬저장소의 커밋 이력을 조회한다.
 
@@ -88,6 +87,7 @@ git log
  
 // 커밋 이력중 커밋ID, 타이틀 메시지만 조회
 git log --oneline
+ 
  
 // 모든 브랜치 커밋 이력 조회
 git log --oneline --decorate --graph --all
